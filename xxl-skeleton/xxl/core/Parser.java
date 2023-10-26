@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.ArrayList;
 
 import xxl.core.exception.UnrecognizedEntryException;
+import xxl.core.*;
 
 class Parser {
 
