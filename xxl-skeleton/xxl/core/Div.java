@@ -2,7 +2,7 @@ package xxl.core;
 
 public class Div extends BinaryFunction {
     
-    public Div(Literal arg0, Literal arg1) {    
+    public Div(Content arg0, Content arg1) {    
         super("DIV", arg0, arg1);
     }
 

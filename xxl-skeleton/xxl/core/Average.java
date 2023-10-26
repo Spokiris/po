@@ -1,5 +1,7 @@
 package xxl.core;
 
+import xxl.core.exception.UnrecognizedEntryException;
+
 public class Average extends IntervalFunction{
 
     public Average(Range range) {
@@ -7,7 +9,7 @@ public class Average extends IntervalFunction{
     }
 
     @Override
-    public Literal compute() {
+    public Literal compute() throws UnrecognizedEntryException {
         Literal result = new LiteralInteger(0);
         int sum = 0;
         int count = 0;
@@ -19,9 +21,7 @@ public class Average extends IntervalFunction{
                     count++;
                 }
                 else {
-                    throw new IllegalArgumentException("Cell value is not an integer");
-                    return new LiteralString("#VALUE");
-                    break;
+                    throw new UnrecognizedEntryException(null);
                 }
                 
         }

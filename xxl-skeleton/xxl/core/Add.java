@@ -2,7 +2,7 @@ package xxl.core;
 
 public class Add extends BinaryFunction {
 
-    public Add(Literal arg0, Literal arg1) {    
+    public Add(Content arg0, Content arg1) {    
         super("ADD", arg0, arg1);
     }
     

@@ -2,7 +2,7 @@ package xxl.core;
 
 public class Mul extends BinaryFunction {
     
-    public Mul(Literal arg0, Literal arg1) {
+    public Mul(Content arg0, Content arg1) {
         super("MUL", arg0, arg1);
     }
 
