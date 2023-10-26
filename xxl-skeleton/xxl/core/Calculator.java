@@ -62,7 +62,7 @@ public class Calculator implements Serializable{
       try{
         FileOutputStream fileOut = new FileOutputStream(_filename);
         ObjectOutputStream out = new ObjectOutputStream(fileOut);
-        Serializable object = this;
+        Serializable object = _spreadsheet;
         out.writeObject(object);
         out.close();
         fileOut.close();
