@@ -1,5 +1,7 @@
 package xxl.core;
 
+import xxl.core.exception.UnrecognizedEntryException;
+
 public class Product extends IntervalFunction { //FIX
 
     public Product(Range range) {
@@ -7,10 +9,15 @@ public class Product extends IntervalFunction { //FIX
     }
 
     @Override
-    public Literal compute() {
-        Literal result = new Literal(1);
-        for (Literal literal : getRange()) {
-            result = result.multiply(literal);
+    public Literal compute() throws UnrecognizedEntryException {
+        Literal result = new LiteralInteger(1);
+        for (Cell cell : getRange().getCells()) {
+            if(cell.value().isInt()) {
+                result = new LiteralInteger(result.asInt() * cell.value().asInt());
+            }
+            else {
+                throw new UnrecognizedEntryException(null);
+            }
         }
         return result;
     }
