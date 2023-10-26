@@ -3,6 +3,10 @@ package xxl.app.main;
 import xxl.app.exception.FileOpenFailedException;
 import xxl.core.Calculator;
 import xxl.core.exception.ImportFileException;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 
@@ -20,9 +24,16 @@ class DoOpen extends Command<Calculator> {
   protected final void execute() throws CommandException {
       try {
         String filename = stringField("filename");
-        _receiver.importFile(filename);
-      } catch (ImportFileException e) {
+        _receiver.load(filename);
+      }
+      catch (FileNotFoundException e) {
         throw new FileOpenFailedException(e);
-        }
+      }
+      catch (ClassNotFoundException e) {
+        throw new FileOpenFailedException(e);
+      }
+      catch (IOException e) {
+        throw new FileOpenFailedException(e);
+      }
   }
 }

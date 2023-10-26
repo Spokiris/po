@@ -9,7 +9,7 @@ public class CutBuffer { //FIXME abstract class
     private Range _range;
 
     public CutBuffer(String range) {
-        _range = new Range(range);//FIXME implemnt parse in range
+        _range = new Range(range);
         
         for (int i = _range.getStartRow(); i <= _range.getEndRow(); i++) {
             for (int j = _range.getStartColumn(); j <= _range.getEndColumn(); j++) {
