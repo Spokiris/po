@@ -1,11 +1,16 @@
 package xxl.core;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class Range {
 
     private int _startRow;
     private int _endRow;
     private int _startColumn;
     private int _endColumn;
+
+    private List<Cell> _Rcells = new ArrayList<>();
 
     public Range(String range) {
         String[] parts = range.split(":");
@@ -39,5 +44,13 @@ public class Range {
 
     public int getColumns() {
         return _endColumn - _startColumn + 1;
-    }  
+    }
+    
+    List<Cell> getCells() {
+        return _Rcells;
+    }
+
+    public void addCell(Cell cell) {
+        _Rcells.add(cell);
+    }
 }

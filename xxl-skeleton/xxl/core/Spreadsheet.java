@@ -119,4 +119,42 @@ public class Spreadsheet implements Serializable {
       _changed = true;
     }
   }
+  
+  public void getRange(String range) {
+    Range r = new Range(range);
+    
+    if(inRange(range)) {
+      for (int i = r.getStartRow(); i <= r.getEndRow() + 1; i++) {     
+        for (int j = r.getStartColumn(); j <= r.getEndColumn() + 1 ; j++) {         
+          r.addCell(_cells[i][j]);
+        }
+      }
+    }
+  }
+
+
+  public void insert(int parseInt, int parseInt2, Content content) {
+  }
+
+Range createRange(String range) throws UnrecognizedEntryException {
+  String[] rangeCoordinates;
+  int firstRow, firstColumn, lastRow, lastColumn;
+  
+  if (range.indexOf(':') != -1) {
+    rangeCoordinates = range.split("[:;]");
+    firstRow = Integer.parseInt(rangeCoordinates[0]);
+    firstColumn = Integer.parseInt(rangeCoordinates[1]);
+    lastRow = Integer.parseInt(rangeCoordinates[2]);
+    lastColumn = Integer.parseInt(rangeCoordinates[3]);
+  } else {
+    rangeCoordinates = range.split(";");
+    firstRow = lastRow = Integer.parseInt(rangeCoordinates[0]);
+    firstColumn = lastColumn = Integer.parseInt(rangeCoordinates[1]);
+  }
+
+  // check if coordinates are valid
+  // if yes
+  return new Range with firstRow, firstColumn, lastRow, lastColumn, spreadsheet;
+}
+
 }

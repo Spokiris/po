@@ -49,7 +49,7 @@ public class Cell {
         return _row + ";" + _column + "|" + _content.toString();
     }
 
-    Literal value(int row, int column) {
+    Literal value() {
         return _content.value();
     }
 

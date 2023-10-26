@@ -2,19 +2,27 @@ package xxl.core;
 
 public abstract class BinaryFunction extends Function {
     private String _name;
+    private Content _arg0;
     private Content _arg1;
-    private Content _arg2;
 
-    protected abstract Literal compute(Literal arg1, Literal arg2);
+    protected abstract Literal compute();
 
-    public BinaryFunction(String name, Content arg1, Content arg2) {
+    public BinaryFunction(String name, Content arg0, Content arg1) {
         super(name);
         _name = name;
+        _arg0 = arg0;
         _arg1 = arg1;
-        _arg2 = arg2;
     }
     
     public String toString() {
-        return "=" + _name + "(" + _arg1 + "," + _arg2 + ")";
+        return "=" + _name + "(" + _arg0 + "," + _arg1 + ")";
+    }
+
+    public Content getArg0() {
+        return _arg0;
+    }
+
+    public Content getArg1() {
+        return _arg1;
     }
 }
