@@ -27,6 +27,10 @@ public class CutBuffer { //FIXME abstract class
         }
     }
 
+    public Range getRange(){
+        return _range;
+    }
+
     public void copy(String range) {
         clearBuff();
         new CutBuffer(range);

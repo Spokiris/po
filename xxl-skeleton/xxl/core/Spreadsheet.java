@@ -41,8 +41,8 @@ public class Spreadsheet implements Serializable {
     return _changed;
   }
 
-  public List<Cell> getCutBuffer() {
-    return _cutBuffer.getCells(); 
+  public CutBuffer getCutBuffer() {
+    return _cutBuffer;
   }
 
   public void copy(Range range) {
