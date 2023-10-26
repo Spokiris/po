@@ -5,6 +5,7 @@ import java.util.HashSet;
 import xxl.core.exception.ImportFileException;
 import xxl.core.exception.MissingFileAssociationException;
 import xxl.core.exception.UnrecognizedEntryException;
+import xxl.core.*;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
