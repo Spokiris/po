@@ -8,9 +8,6 @@ import java.io.Serializable;
 import xxl.core.exception.UnrecognizedEntryException;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Hashtable;
 import java.util.List;
 /**
  * Class representing a spreadsheet.
@@ -59,11 +56,27 @@ public class Spreadsheet implements Serializable {
   }
 
   public void clear(String range) {
-    _cutBuffer.clear(range); //FIXME implement clear
+    Range r = new Range(range);
+    if(inRange(range)) {
+      for (int i = r.getStartRow(); i <= r.getEndRow() + 1; i++) {     
+        for (int j = r.getStartColumn(); j <= r.getEndColumn() + 1 ; j++) {         
+          _cells[i][j].setContent(); 
+        }
+      }
+    }
   }
 
   public void paste(String range) {
-    _cutBuffer.paste(range); //FIXME implement paste dimensions must match
+    Range r = new Range(range);
+    if(inRange(range)) {
+      for (int i = r.getStartRow(); i <= r.getEndRow() + 1; i++) {     
+        for (int j = r.getStartColumn(); j <= r.getEndColumn() + 1 ; j++) {         
+          for (Cell cell : _cutBuffer.getCells()) {
+            _cells[i][j].setContent(cell.value(cell.row(), cell.column())); 
+          }
+        }
+      }
+    }
   }
 
   public void cut(String range) {
@@ -76,6 +89,11 @@ public class Spreadsheet implements Serializable {
     }
     _users.add(user);
     return true;
+  }
+
+  public boolean inRange(String range) {
+    Range r = new Range(range);
+    return r.getStartRow() <= _rows && r.getEndRow() <= _rows && r.getStartColumn() <= _columns && r.getEndColumn() <= _columns;
   }
 
   Literal value(int row, int column) throws UnrecognizedEntryException {

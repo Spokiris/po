@@ -41,6 +41,10 @@ public class Cell {
         _content = asContent(content);
     }
 
+    void setContent() {
+        _content = null; //FIXME??
+    }
+
     public String toString() {
         return _row + ";" + _column + "|" + _content.toString();
     }

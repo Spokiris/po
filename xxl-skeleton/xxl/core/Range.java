@@ -33,6 +33,11 @@ public class Range {
         return _endColumn;
     }
 
-    
-    
+    public int getRows() {
+        return _endRow - _startRow + 1;
+    }
+
+    public int getColumns() {
+        return _endColumn - _startColumn + 1;
+    }  
 }
