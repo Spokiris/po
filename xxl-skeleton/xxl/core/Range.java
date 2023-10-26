@@ -64,7 +64,9 @@ public class Range {
     public String toString(){ //FIXME
         String output = "";
         for (Cell cell : _Rcells) {
+            if (cell.content() != null) {
             output += cell.toString() + "\n";
+            }
         }
         return output; 
     }
