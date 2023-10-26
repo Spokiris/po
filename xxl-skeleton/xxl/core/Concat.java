@@ -9,16 +9,11 @@ public class Concat extends IntervalFunction {
     }
 
     @Override
-    public Literal compute() throws UnrecognizedEntryException {
+    public Literal compute(){
         Literal result = new LiteralString("");
         for(Cell cell : getRange().getCells()) {
-            if (cell.value().isString()) {
-                result = new LiteralString(result.asString() + cell.value().asString());
-            }
-            else {
-                throw new UnrecognizedEntryException(null);
-            }
+            result = new LiteralString(result.asString() + cell.value().asString());
         }
-        return result;
+    return result;
     }
 }

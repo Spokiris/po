@@ -13,7 +13,7 @@ public abstract class IntervalFunction extends Function {
         _range = range;
     }
     
-    protected abstract Literal compute() throws UnrecognizedEntryException;
+    protected abstract Literal compute();
     
     public String toString() {
         return "=" + _name + "(" + _range.toString() + ")";
