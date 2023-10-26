@@ -1,8 +1,8 @@
 package xxl.app.main;
 
+import xxl.core.Calculator;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
-import xxl.core.Calculator;
 
 /**
  * Open menu.
