@@ -48,26 +48,24 @@ public class Spreadsheet implements Serializable {
     return _cutBuffer.getCells(); 
   }
 
-  public void copy(String range) {
+  public void copy(Range range) {
     _cutBuffer.copy(range); 
   }
 
-  public void clear(String range) {
-    Range r = new Range(range);
+  public void clear(Range range) {
     if(inRange(range)) {
-      for (int i = r.getStartRow(); i <= r.getEndRow() + 1; i++) {     
-        for (int j = r.getStartColumn(); j <= r.getEndColumn() + 1 ; j++) {         
+      for (int i = range.getStartRow(); i <= range.getEndRow() + 1; i++) {     
+        for (int j = range.getStartColumn(); j <= range.getEndColumn() + 1 ; j++) {         
           _cells[i][j].setContent(); 
         }
       }
     }
   }
 
-  public void paste(String range) {
-    Range r = new Range(range);
+  public void paste(Range range) {
     if(inRange(range)) {
-      for (int i = r.getStartRow(); i <= r.getEndRow() + 1; i++) {     
-        for (int j = r.getStartColumn(); j <= r.getEndColumn() + 1 ; j++) {         
+      for (int i = range.getStartRow(); i <= range.getEndRow() + 1; i++) {     
+        for (int j = range.getStartColumn(); j <= range.getEndColumn() + 1 ; j++) {         
           for (Cell cell : _cutBuffer.getCells()) {
             _cells[i][j].setContent(cell.value()); 
           }
@@ -76,8 +74,9 @@ public class Spreadsheet implements Serializable {
     }
   }
 
-  public void cut(String range) {
-    _cutBuffer.cut(range); //FIXME implement cut
+  public void cut(Range range) {
+    paste(range);
+    clear(range);
   }
   
   boolean addUser(User user) {
@@ -88,11 +87,9 @@ public class Spreadsheet implements Serializable {
     return true;
   }
 
-  public boolean inRange(String range) {
-    Range r = new Range(range);
-    return r.getStartRow() <= _rows && r.getEndRow() <= _rows && r.getStartColumn() <= _columns && r.getEndColumn() <= _columns;
+  public boolean inRange(Range range) {
+    return range.getStartRow() <= _rows && range.getEndRow() <= _rows && range.getStartColumn() <= _columns && range.getEndColumn() <= _columns;
   }
-
   Literal value(int row, int column) throws UnrecognizedEntryException {
     if(isCell(row, column)) {
       return _cells[row][column].value();
@@ -119,15 +116,13 @@ public class Spreadsheet implements Serializable {
       _cells[row][column].setContent(contentSpecification);
       _changed = true;
     }
-  }
-  
-  public void getRange(String range) {
-    Range r = new Range(range);
-    
+  }    
+
+  public void getRange(Range range) {
     if(inRange(range)) {
-      for (int i = r.getStartRow(); i <= r.getEndRow() + 1; i++) {     
-        for (int j = r.getStartColumn(); j <= r.getEndColumn() + 1 ; j++) {         
-          r.addCell(_cells[i][j]);
+      for (int i = range.getStartRow(); i <= range.getEndRow() + 1; i++) {     
+        for (int j = range.getStartColumn(); j <= range.getEndColumn() + 1 ; j++) {         
+          range.addCell(_cells[i][j]);
         }
       }
     }
@@ -135,6 +130,7 @@ public class Spreadsheet implements Serializable {
 
 
   public void insert(int parseInt, int parseInt2, Content content) {
+    
   }
 
 Range createRange(String range) throws UnrecognizedEntryException {
