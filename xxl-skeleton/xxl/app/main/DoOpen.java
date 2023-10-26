@@ -2,7 +2,6 @@ package xxl.app.main;
 
 import xxl.app.exception.FileOpenFailedException;
 import xxl.core.Calculator;
-import xxl.core.exception.ImportFileException;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

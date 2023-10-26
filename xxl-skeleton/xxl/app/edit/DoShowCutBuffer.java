@@ -1,8 +1,7 @@
 package xxl.app.edit;
 
 import pt.tecnico.uilib.menus.Command;
-import xxl.core.Spreadsheet;
-// FIXME import classes
+import xxl.core.*;
 
 /**
  * Show cut buffer command.
@@ -14,7 +13,12 @@ class DoShowCutBuffer extends Command<Spreadsheet> {
   }
   
   @Override
-  protected final void execute() {
-    // FIXME implement command
+  protected final void execute(){
+    Range range = _receiver.getCutBuffer().getRange();
+    if (range == null) {
+      _display.popup("Cut buffer is empty");
+      return;
+    }
+    _display.popup(range.toString());
   }
 }
