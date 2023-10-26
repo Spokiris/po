@@ -62,6 +62,6 @@ public class Range {
     }
 
     public String toString(){ //FIXME
-        return _startRow + ":" + _endRow + ";" + _startColumn + ":" + _endColumn;
+        return _startRow + ";" + _startColumn + ":" + _endRow + ";" + _endColumn;
     }
 }
