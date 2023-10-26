@@ -25,11 +25,8 @@ class DoSave extends Command<Calculator> {
       try{
       _receiver.saveAs(filename);
       }catch (FileNotFoundException e){
-
       }catch (IOException e){
-
       }catch (MissingFileAssociationException e){
-
       }
     }
   }
