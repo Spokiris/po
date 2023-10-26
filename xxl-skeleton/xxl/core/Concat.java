@@ -1,7 +1,4 @@
 package xxl.core;
-
-import xxl.core.exception.UnrecognizedEntryException;
-
 public class Concat extends IntervalFunction {
     
     public Concat(Range range) {

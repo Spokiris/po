@@ -1,7 +1,5 @@
 package xxl.core;
 
-import xxl.core.exception.UnrecognizedEntryException;
-
 public abstract class IntervalFunction extends Function {
     
     private String _name;

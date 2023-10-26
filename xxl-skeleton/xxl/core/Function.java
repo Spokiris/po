@@ -1,7 +1,4 @@
 package xxl.core;
-
-import xxl.core.exception.UnrecognizedEntryException;
-
 public abstract class Function extends Content {
     private String _name;
 
