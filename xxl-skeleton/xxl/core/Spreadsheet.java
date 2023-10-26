@@ -2,7 +2,7 @@ package xxl.core;
 
 // FIXME import classes
 
-import java.io.Serial;
+
 import java.io.Serializable;
 
 import xxl.core.exception.UnrecognizedEntryException;
@@ -60,6 +60,14 @@ public class Spreadsheet implements Serializable {
 
   public void clear(String range) {
     _cutBuffer.clear(range); //FIXME implement clear
+  }
+
+  public void paste(String range) {
+    _cutBuffer.paste(range); //FIXME implement paste dimensions must match
+  }
+
+  public void cut(String range) {
+    _cutBuffer.cut(range); //FIXME implement cut
   }
   
   boolean addUser(User user) {

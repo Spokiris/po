@@ -1,5 +1,7 @@
 package xxl.core;
 
+import xxl.core.exception.UnrecognizedEntryException;
+
 public class Cell {
     private int _row;
     private int _column;
@@ -35,7 +37,7 @@ public class Cell {
         _content = content;
     }
     
-    void setContent(String content) {
+    void setContent(String content) throws UnrecognizedEntryException {
         _content = asContent(content);
     }
 
@@ -55,11 +57,22 @@ public class Cell {
         return _content.asInt();
     }
 
-    public Content asContent(String content) {
+    public Content asContent(String content) throws UnrecognizedEntryException {
         if (content.startsWith("=(")) {
             return new Reference(content.substring(2, content.length() - 1)).value();
         } else if (content.startsWith("=")) {
-            return new Function(content.substring(1)).compute().value();
+            return new Function(content.substring(1)) {
+                @Override
+                public Literal compute() {
+                    // Implement the compute method here
+                    return null;
+                }
+
+                @Override
+                public String toString() {
+                    return null;
+                }
+            }.compute().value();
         } else {
             try {
                 return new LiteralInteger(Integer.parseInt(content));

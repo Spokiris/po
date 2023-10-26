@@ -18,33 +18,22 @@ public class CutBuffer { //FIXME abstract class
         }
     }   
 
+    public void clearBuff() {
+        _buffer.clear(); 
+    }
+
     public void copy(String range) {
-        CutBuffer cutBuffer = new CutBuffer(range); //FIXME implement CutBuffer
-        
-        
+        clearBuff();
+        new CutBuffer(range);
     }
 
-    public void clear() {
-        _buffer.removeAll(_buffer); //FIXME implement removeAll
-        // FIXME implement clear
-    }
-
-    public void paste(String range) {
-        // FIXME implement paste dimensions must match
-
+    public void delete(String range) {
         
     }
 
     public void cut(String range) {
-        // FIXME implement cut
-    }
-
-    public void insert(String range) {
-        // FIXME implement insert
-    }
-
-    public void delete(String range) {
-        // FIXME implement delete
+        copy(range);
+        delete(range);
     }
 
     List<Cell> getCells() {
