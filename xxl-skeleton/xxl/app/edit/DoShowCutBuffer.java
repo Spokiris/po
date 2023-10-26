@@ -2,7 +2,6 @@ package xxl.app.edit;
 
 import pt.tecnico.uilib.menus.Command;
 import xxl.core.*;
-// FIXME import classes
 
 /**
  * Show cut buffer command.
