@@ -1,8 +1,6 @@
 package xxl.core;
 
-import xxl.core.exception.UnrecognizedEntryException;
-
-public class Product extends IntervalFunction { //FIX
+public class Product extends IntervalFunction {
 
     public Product(Range range) {
         super("PRODUCT", range);
