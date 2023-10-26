@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import xxl.core.Calculator;
 import xxl.core.exception.MissingFileAssociationException;
-import pt.tecnico.uilib.forms.Form;
 import pt.tecnico.uilib.menus.Command;
 
 /**
