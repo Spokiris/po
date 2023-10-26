@@ -1,8 +1,6 @@
 package xxl.core;
 
-import xxl.core.exception.UnrecognizedEntryException;
-
-public class Reference {
+public class Reference extends Content{
     private int _row;
     private int _column;
     private Spreadsheet _spreadsheet;
@@ -13,11 +11,10 @@ public class Reference {
         _spreadsheet = spreadsheet;
     }   
 
-    public Reference(String substring) {
+    public Reference(String substring, Spreadsheet spreadsheet) {
         String[] parts = substring.split(";");
         _row = Integer.parseInt(parts[0]);
         _column = Integer.parseInt(parts[1]);
-        _spreadsheet = null;//FIXME
     }
 
     public int row() {
@@ -36,7 +33,8 @@ public class Reference {
         return "=" + _row + ";" + _column ;
     }
     
-    Literal value() throws UnrecognizedEntryException {
-        return _spreadsheet.value(_row, _column);
+    @Override
+    Literal value(){
+        return _spreadsheet.getCell(_row, _column).value();
     }
 }
