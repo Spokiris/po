@@ -15,7 +15,6 @@ import java.util.List;
 public class Spreadsheet implements Serializable {
   @Serial
   private static final long serialVersionUID = 202308312359L;
-  // FIXME define attributes
   private int _rows;
   private int _columns;
   private boolean _changed;
@@ -23,7 +22,6 @@ public class Spreadsheet implements Serializable {
   private CutBuffer _cutBuffer;
   private Cell[][] _cells = new Cell[_rows][_columns];
   
-  // FIXME define contructor(s)
   public Spreadsheet(int rows, int columns) {
     _rows = rows;
     _columns = columns;
@@ -33,8 +31,7 @@ public class Spreadsheet implements Serializable {
   public boolean isCell(int row, int column) {
     return row <= _rows && column <= _columns && row > 0 && column > 0;
   }
-  
-  // FIXME define methods
+
   public int getRows() {
     return _rows;
   }
@@ -72,7 +69,7 @@ public class Spreadsheet implements Serializable {
       for (int i = r.getStartRow(); i <= r.getEndRow() + 1; i++) {     
         for (int j = r.getStartColumn(); j <= r.getEndColumn() + 1 ; j++) {         
           for (Cell cell : _cutBuffer.getCells()) {
-            _cells[i][j].setContent(cell.value(cell.row(), cell.column())); 
+            _cells[i][j].setContent(cell.value()); 
           }
         }
       }
@@ -98,7 +95,7 @@ public class Spreadsheet implements Serializable {
 
   Literal value(int row, int column) throws UnrecognizedEntryException {
     if(isCell(row, column)) {
-      return _cells[row][column].value(row, column);
+      return _cells[row][column].value();
         }
         throw new UnrecognizedEntryException("Cell does not exist");
     
@@ -112,7 +109,7 @@ public class Spreadsheet implements Serializable {
    * @param contentSpecification the specification in a string format of the content to put
    *        in the specified cell.
    */
-  public void insertContent(int row, int column, String contentSpecification) throws UnrecognizedEntryException /* FIXME maybe add exceptions */ {
+  public void insertContent(int row, int column, Content contentSpecification) throws UnrecognizedEntryException /* FIXME maybe add exceptions */ {
     //FIXME implement method
     if(isCell(row, column)) {
       _cells[row][column].setContent(contentSpecification);

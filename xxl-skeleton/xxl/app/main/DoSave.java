@@ -15,14 +15,12 @@ class DoSave extends Command<Calculator> {
 
   DoSave(Calculator receiver) {
     super(Label.SAVE, receiver, xxl -> xxl.getSpreadsheet() != null);
+    addStringField("filename","Introduza o nome do ficheiro:");
   }
   
   @Override
   protected final void execute() {
     if (_receiver.getFilename() == null) {
-      Form form = new Form();
-      form.addStringField("filename", "Introduza o nome do ficheiro:");
-      form.parse();
       String filename = stringField("filename");
       try{
       _receiver.saveAs(filename);
