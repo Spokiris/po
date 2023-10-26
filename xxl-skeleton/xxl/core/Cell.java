@@ -6,6 +6,7 @@ public class Cell {
     private int _row;
     private int _column;
     private Content _content;
+    private Spreadsheet _spreadsheet;
     
 
     public Cell(int row, int column) {
@@ -63,7 +64,7 @@ public class Cell {
 
     public Content asContent(String content) throws UnrecognizedEntryException {
         if (content.startsWith("=(")) {
-            return new Reference(content.substring(2, content.length() - 1)).value();
+            return new Reference(content.substring(2, content.length() - 1),_spreadsheet).value();
         } else if (content.startsWith("=")) {
             return new Function(content.substring(1)) {
                 @Override

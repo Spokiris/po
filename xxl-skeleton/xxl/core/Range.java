@@ -22,6 +22,13 @@ public class Range {
         _endColumn = (int) end[0].charAt(0) - 64;
     }
 
+    public Range(int startRow, int endRow, int startColumn, int endColumn) {
+        _startRow = startRow;
+        _endRow = endRow;
+        _startColumn = startColumn;
+        _endColumn = endColumn;
+    }
+
     public int getStartRow() {
         return _startRow;
     }

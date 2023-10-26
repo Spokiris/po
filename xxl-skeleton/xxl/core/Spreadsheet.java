@@ -100,6 +100,10 @@ public class Spreadsheet implements Serializable {
         throw new UnrecognizedEntryException("Cell does not exist");
     
   }
+
+  public Cell getCell(int row, int column) {
+    return _cells[row][column];
+  }
   
   /**
    * Insert specified content in specified address.
@@ -151,7 +155,7 @@ Range createRange(String range) throws UnrecognizedEntryException {
 
   // check if coordinates are valid
   // if yes
-  return new Range with firstRow, firstColumn, lastRow, lastColumn, spreadsheet;
+  return new Range(firstRow, firstColumn, lastRow, lastColumn);
 }
 
 }

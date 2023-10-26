@@ -98,7 +98,7 @@ class Parser {
       return parseFunction(contentSpecification);
     // It is a reference
     String[] address = contentSpecification.split(";");
-    return new Reference(Integer.parseInt(address[0].trim()), Integer.parseInt(address[1]));
+    return new Reference(Integer.parseInt(address[0].trim()), Integer.parseInt(address[1]),_spreadsheet);
   }
 
   private Content parseFunction(String functionSpecification) throws UnrecognizedEntryException /*, more exceptions */ {
@@ -130,7 +130,7 @@ class Parser {
   private Content parseArgumentExpression(String argExpression) throws UnrecognizedEntryException {
     if (argExpression.contains(";")  && argExpression.charAt(0) != '\'') {
       String[] address = argExpression.split(";");
-      return new Reference(Integer.parseInt(address[0].trim()), Integer.parseInt(address[1]));
+      return new Reference(Integer.parseInt(address[0].trim()), Integer.parseInt(address[1]),_spreadsheet);
       // pode ser diferente do anterior em parseContentExpression
     } else
       return parseLiteral(argExpression);
@@ -138,7 +138,7 @@ class Parser {
 
   private Content parseIntervalFunction(String functionName, String rangeDescription)
     throws UnrecognizedEntryException {
-    Range range = _spreadsheet.buildRange(rangeDescription);
+    Range range = _spreadsheet.createRange(rangeDescription);
     switch (functionName) {
       case "CONCAT":
         return new Concat(range);
