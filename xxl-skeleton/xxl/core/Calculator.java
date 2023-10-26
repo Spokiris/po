@@ -130,7 +130,7 @@ public class Calculator implements Serializable{
         _spreadsheet = spreadsheet;
     } 
     catch (IOException | UnrecognizedEntryException e) {
-      throw new ImportFileException(filename, e);
+      throw new ImportFileException(filzename, e);
     }
   } 
 }

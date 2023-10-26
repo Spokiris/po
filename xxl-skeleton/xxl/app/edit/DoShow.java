@@ -1,9 +1,11 @@
 package xxl.app.edit;
 
+import xxl.core.Spreadsheet;
+import xxl.core.Range;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
-import xxl.core.Spreadsheet;
-// FIXME import classes
+import xxl.app.exception.*;
+import xxl.core.exception.*;
 
 /**
  * Class for searching functions.
@@ -12,11 +14,18 @@ class DoShow extends Command<Spreadsheet> {
 
   DoShow(Spreadsheet receiver) {
     super(Label.SHOW, receiver);
-    // FIXME add fields
+    addStringField("range",Message.address());
+    
   }
   
   @Override
   protected final void execute() throws CommandException {
-    // FIXME implement command
+    String rangeDescription = stringField("range");
+    try {
+      Range range = _receiver.createRange(rangeDescription);
+      _display.popup(range.toString());
+    } catch (ArrayIndexOutOfBoundsException | UnrecognizedEntryException e){
+      throw new InvalidCellRangeException(rangeDescription);
+    }
   }
 }

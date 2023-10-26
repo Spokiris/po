@@ -60,4 +60,8 @@ public class Range {
     public void addCell(Cell cell) {
         _Rcells.add(cell);
     }
+
+    public String toString(){ //FIXME
+        return _startRow + ":" + _endRow + ";" + _startColumn + ":" + _endColumn;
+    }
 }
