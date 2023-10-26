@@ -3,8 +3,6 @@ package xxl.app;
 import pt.tecnico.uilib.Dialog;
 import xxl.core.exception.ImportFileException;
 
-import java.io.IOException;
-
 /**
  * Class that represents the spreadsheet's textual interface.
  */

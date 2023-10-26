@@ -1,32 +1,52 @@
 package xxl.core;
 
-import java.io.IOException;
-import java.io.Serializable;
-import java.io.FileNotFoundException;
+import java.util.HashSet;
 
 import xxl.core.exception.ImportFileException;
 import xxl.core.exception.MissingFileAssociationException;
-import xxl.core.exception.UnavailableFileException;
 import xxl.core.exception.UnrecognizedEntryException;
 
-// FIXME import classes
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 /**
  * Class representing a spreadsheet application.
  */
-public class Calculator {
+public class Calculator implements Serializable{
   /** The current spreadsheet. */
   private Spreadsheet _spreadsheet;
-  
-  // FIXME add more fields and methods if needed
+  private User _activeUser;
+  private HashSet<User> _users;
+  private String _filename;
   
   /**
    * Return the current spreadsheet.
    *
    * @returns the current spreadsheet of this application. This reference can be null.
    */
-  public final Spreadsheet getSpreadsheet() {
-    return _spreadsheet;
+  
+  public String getFilename() {
+    return _filename;
+  }
+
+  public void setSpreadsheet(Spreadsheet spreadsheet) {
+    _spreadsheet = spreadsheet;
+  }
+
+  public Spreadsheet getSpreadsheet(){
+      return _spreadsheet;
+  }
+
+  public void createNewSpreadsheet(int rows, int columns) {
+    _spreadsheet = new Spreadsheet(rows, columns);
+  }
+
+  public boolean createUser(String username) {
+    _activeUser = new User(username);
+    return _users.add(_activeUser);
   }
 
   /**
@@ -37,7 +57,20 @@ public class Calculator {
    * @throws IOException if there is some error while serializing the state of the network to disk.
    */
   public void save() throws FileNotFoundException, MissingFileAssociationException, IOException {
-    // FIXME implement serialization method
+      try{
+        FileOutputStream fileOut = new FileOutputStream(_filename);
+        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        Serializable object = this;
+        out.writeObject(object);
+        out.close();
+        fileOut.close();
+      }
+      catch (FileNotFoundException e) {
+        throw new FileNotFoundException(_filename);
+      }
+      catch (IOException e) {
+        throw new IOException();
+      }
   }
   
   /**
@@ -50,17 +83,16 @@ public class Calculator {
    * @throws IOException if there is some error while serializing the state of the network to disk.
    */
   public void saveAs(String filename) throws FileNotFoundException, MissingFileAssociationException, IOException {
-    // FIXME implement serialization method
-  }
-  
-  /**
-   * @param filename name of the file containing the serialized application's state
-   *        to load.
-   * @throws UnavailableFileException if the specified file does not exist or there is
-   *         an error while processing this file.
-   */
-  public void load(String filename) throws UnavailableFileException {
-    // FIXME implement serialization method
+    try{
+      _filename = filename;
+      save();
+    }
+    catch (FileNotFoundException e) {
+      throw new FileNotFoundException(filename);
+    }
+    catch (IOException e) {
+      throw new IOException();
+    }
   }
   
   /**
@@ -71,12 +103,11 @@ public class Calculator {
    */
   public void importFile(String filename) throws ImportFileException {
     try {
-      // FIXME open import file and feed entries to new spreadsheet (in a cycle)
-      //       each entry is inserted using insertContent of Spreadsheet. Set new
-      // spreadsheet as the active one.
-      // ....
-
-    } catch (IOException | UnrecognizedEntryException /* FIXME maybe other exceptions */ e) {
+        Parser parser = new Parser();
+        Spreadsheet spreadsheet = parser.parseFile(filename);
+        _spreadsheet = spreadsheet;
+    } 
+    catch (IOException | UnrecognizedEntryException e) {
       throw new ImportFileException(filename, e);
     }
   } 
