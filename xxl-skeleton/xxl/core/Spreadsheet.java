@@ -1,8 +1,5 @@
 package xxl.core;
 
-// FIXME import classes
-
-
 import java.io.Serializable;
 
 import xxl.core.exception.UnrecognizedEntryException;
@@ -77,7 +74,7 @@ public class Spreadsheet implements Serializable {
   }
 
   public void cut(String range) {
-    _cutBuffer.cut(range); //FIXME implement cut
+    _cutBuffer.cut(range);
   }
   
   boolean addUser(User user) {
@@ -113,8 +110,7 @@ public class Spreadsheet implements Serializable {
    * @param contentSpecification the specification in a string format of the content to put
    *        in the specified cell.
    */
-  public void insertContent(int row, int column, Content contentSpecification) throws UnrecognizedEntryException /* FIXME maybe add exceptions */ {
-    //FIXME implement method
+  public void insertContent(int row, int column, Content contentSpecification) throws UnrecognizedEntryException {
     if(isCell(row, column)) {
       _cells[row][column].setContent(contentSpecification);
       _changed = true;
@@ -137,7 +133,7 @@ public class Spreadsheet implements Serializable {
   public void insert(int parseInt, int parseInt2, Content content) {
   }
 
-Range createRange(String range) throws UnrecognizedEntryException {
+public Range createRange(String range) throws UnrecognizedEntryException {
   String[] rangeCoordinates;
   int firstRow, firstColumn, lastRow, lastColumn;
   

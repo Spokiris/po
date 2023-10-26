@@ -6,6 +6,8 @@ import xxl.core.exception.ImportFileException;
 import xxl.core.exception.MissingFileAssociationException;
 import xxl.core.exception.UnrecognizedEntryException;
 
+import java.io.ObjectInputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -71,6 +73,26 @@ public class Calculator implements Serializable{
       catch (IOException e) {
         throw new IOException();
       }
+  }
+
+  public void load(String filename) throws FileNotFoundException, IOException, ClassNotFoundException{
+    try{
+      FileInputStream fileIn = new FileInputStream(filename);
+      ObjectInputStream in = new ObjectInputStream(fileIn);
+      Spreadsheet spreadsheet = (Spreadsheet) in.readObject();
+      in.close();
+      fileIn.close();
+      setSpreadsheet(spreadsheet);
+    }
+    catch (FileNotFoundException e) {
+      throw new FileNotFoundException(filename);
+    }
+    catch (IOException e) {
+      throw new IOException();
+    }
+    catch (ClassNotFoundException e) {
+      throw new ClassNotFoundException();
+    }
   }
   
   /**
