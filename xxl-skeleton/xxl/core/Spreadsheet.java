@@ -5,6 +5,8 @@ import java.io.Serializable;
 import xxl.core.exception.UnrecognizedEntryException;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 /**
  * Class representing a spreadsheet.
  */
@@ -185,18 +187,33 @@ public Range createRange(String range,Spreadsheet spreadsheet) throws Unrecogniz
     }
 
     public String showFunctions(String function){
-        String output = "";
+        ArrayList<Cell> cells = new ArrayList<Cell>();
         for (int i = 1; i <= _rows; i++) {
             for (int j = 1; j <= _columns; j++) {
                 if(_cells[i-1][j-1].content() != null){
-                    if(_cells[i-1][j-1].content().toString().startsWith("="+function)){
-                        output += _cells[i-1][j-1].toString()+"\n";
+                    if(_cells[i-1][j-1].content().toString().contains(function)){
+                        cells.add(_cells[i-1][j-1]);
                     }
                 }
             }
         }
-        return output;
+        sortCellsByContent(cells);
+        String result = "";
+        for (Cell cell : cells) {
+            result += cell.toString()+"\n";
+        }
+        return result;
     }
 
+    public void sortCellsByContent(ArrayList<Cell> cells) {
+    Collections.sort(cells, new Comparator<Cell>() {
+        @Override
+        public int compare(Cell c1, Cell c2) {
+            String s1 = c1.content() != null ? c1.content().toString() : "";
+            String s2 = c2.content() != null ? c2.content().toString() : "";
+            return s1.compareTo(s2);
+        }
+    });
+  }
     
 }
