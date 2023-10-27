@@ -55,7 +55,7 @@ public class Spreadsheet implements Serializable {
 
   public void copy(String range) throws UnrecognizedEntryException {
     try{
-      Range tempRange = createRange(range,this);
+      Range tempRange = createRange(range);
       _cutBuffer.copy(tempRange);
     }catch(UnrecognizedEntryException e){
       throw new UnrecognizedEntryException(e.getMessage());
@@ -64,7 +64,7 @@ public class Spreadsheet implements Serializable {
 
   public void clear(String range) throws UnrecognizedEntryException{
     try{
-      Range tempRange = createRange(range,this);
+      Range tempRange = createRange(range);
     if(inRange(tempRange)) {
       for (int i = tempRange.getStartRow(); i <= tempRange.getEndRow(); i++) {     
         for (int j = tempRange.getStartColumn(); j <= tempRange.getEndColumn() ; j++) {         
@@ -79,7 +79,7 @@ public class Spreadsheet implements Serializable {
 
   public void paste(String range) throws UnrecognizedEntryException {
     try{
-      Range tempRange = createRange(range,this);
+      Range tempRange = createRange(range);
     if(inRange(tempRange)){
       for (int i = tempRange.getStartRow(); i <= tempRange.getEndRow(); i++) {     
         for (int j = tempRange.getStartColumn(); j <= tempRange.getEndColumn() ; j++) {         
@@ -147,7 +147,7 @@ public class Spreadsheet implements Serializable {
       }
     }
 
-public Range createRange(String range,Spreadsheet spreadsheet) throws UnrecognizedEntryException {
+public Range createRange(String range) throws UnrecognizedEntryException {
     String[] rangeCoordinates;
     int firstRow, firstColumn, lastRow, lastColumn;
     
@@ -168,7 +168,7 @@ public Range createRange(String range,Spreadsheet spreadsheet) throws Unrecogniz
     if(firstRow != lastRow && firstColumn != lastColumn){
         throw new UnrecognizedEntryException("");
     }
-    return new Range(firstRow, lastRow, firstColumn, lastColumn, spreadsheet);
+    return new Range(firstRow, lastRow, firstColumn, lastColumn, this);
     }
 
     public String showFunctions(String function){

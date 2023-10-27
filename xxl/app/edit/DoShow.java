@@ -1,6 +1,7 @@
 package xxl.app.edit;
 
 import xxl.core.Spreadsheet;
+import xxl.core.Cell;
 import xxl.core.Range;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
@@ -22,9 +23,10 @@ class DoShow extends Command<Spreadsheet> {
   protected final void execute() throws CommandException {
     String rangeDescription = stringField("range");
     try {
-      Range range = _receiver.createRange(rangeDescription,_receiver);
-      _display.addLine(range);
-      _display.display();
+      Range range = _receiver.createRange(rangeDescription);
+      for (Cell cell : range.getCells()) {
+        _display.addLine(cell.toString()+"\n");
+      }
     } catch (ArrayIndexOutOfBoundsException | UnrecognizedEntryException e){
       throw new InvalidCellRangeException(rangeDescription);
     }
