@@ -3,7 +3,7 @@ package xxl.core;
 public abstract class IntervalFunction extends Function {
     
     private String _name;
-    private Range _range;
+    protected Range _range;
     
     public IntervalFunction(String name, Range range) {
         super(name);

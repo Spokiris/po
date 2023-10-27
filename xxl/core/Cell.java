@@ -2,13 +2,11 @@ package xxl.core;
 
 import java.io.Serializable;
 
-import xxl.core.exception.UnrecognizedEntryException;
 
 public class Cell implements Serializable{
     private int _row;
     private int _column;
     private Content _content;
-    private Spreadsheet _spreadsheet;
     
 
     public Cell(int row, int column) {
@@ -44,10 +42,6 @@ public class Cell implements Serializable{
     void setContent(Content content) {
         _content = content;
     }
-    
-    void setContent(String content) throws UnrecognizedEntryException {
-        _content = asContent(content);
-    }
 
     void setContent() {
         _content = null;
@@ -55,7 +49,7 @@ public class Cell implements Serializable{
 
     public String toString(){
         if (_content == null) {
-            return "";
+            return _row + ";" + _column + "|";
         }
         return _row + ";" + _column + "|" + _content.toString();
     }
@@ -81,27 +75,4 @@ public class Cell implements Serializable{
         return _content.asInt();
     }
 
-    public Content asContent(String content) throws UnrecognizedEntryException {
-        if (content.startsWith("=(")) {
-            return new Reference(content.substring(2, content.length() - 1),_spreadsheet).value();
-        } else if (content.startsWith("=")) {
-            return new Function(content.substring(1)) {
-                @Override
-                public Literal compute() {
-                    return null;
-                }
-
-                @Override
-                public String toString() {
-                    return null;
-                }
-            }.compute().value();
-        } else {
-            try {
-                return new LiteralInteger(Integer.parseInt(content));
-            } catch (NumberFormatException e) {
-                return new LiteralString(content);
-            }
-        }
-    }
 }

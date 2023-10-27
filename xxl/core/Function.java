@@ -10,6 +10,10 @@ public abstract class Function extends Content{
         _name = name;
     }
 
+    public String name(){
+        return _name;
+    }
+
     public String asString() {
         return _name;
     }

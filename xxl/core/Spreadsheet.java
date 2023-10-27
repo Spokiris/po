@@ -7,6 +7,7 @@ import xxl.core.exception.UnrecognizedEntryException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 /**
  * Class representing a spreadsheet.
  */
@@ -113,6 +114,21 @@ public class Spreadsheet implements Serializable {
   public boolean inRange(Range range) {
     return range.getStartRow() <= _rows && range.getEndRow() <= _rows && range.getStartColumn() <= _columns && range.getEndColumn() <= _columns;
   }
+
+  public List<Cell> searchFunction(String function){
+    List<Cell> cellList = new ArrayList<>();
+    for(int i=1;i < getColumns();i++ ){
+      for(int j=1;j < getRows();j++){
+        try{
+          if(getCell(i,j).content().toString().contains(function)){
+            cellList.add(getCell(i,j));
+          }
+        } catch (Exception e){
+          continue;
+        }
+      }}
+      return cellList;
+    }
 
   Literal value(int row, int column) throws UnrecognizedEntryException {
     if(isCell(row, column)) {

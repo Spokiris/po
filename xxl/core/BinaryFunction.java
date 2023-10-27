@@ -2,8 +2,8 @@ package xxl.core;
 
 public abstract class BinaryFunction extends Function {
     private String _name;
-    private Content _arg0;
-    private Content _arg1;
+    protected Content _arg0;
+    protected Content _arg1;
 
     protected abstract Literal compute();
 
@@ -15,7 +15,20 @@ public abstract class BinaryFunction extends Function {
     }
     
     public String toString() {
-        return "=" + _name + "(" + _arg0 + "," + _arg1 + ")";
+        String[] ref0 = _arg0.toString().split("=");
+        String[] ref1 = _arg1.toString().split("=");
+        String s = "";
+        if (ref0.length == 1) {
+            s = "=" + _name + "(" + ref0 + ",";
+        } else{
+            s = "=" + _name + "(" + ref0[1] + ",";
+        }
+        if (ref1.length == 1){
+            s += ref1 +")";
+        }else{
+            s += ref1[1] +")";
+        }
+        return s;
     }
 
     public Content getArg0() {
