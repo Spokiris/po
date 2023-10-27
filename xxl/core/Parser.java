@@ -57,7 +57,8 @@ class Parser {
     
     if (components.length == 2) {
       String[] address = components[0].split(";");
-      _spreadsheet.insertContent(Integer.parseInt(address[0]), Integer.parseInt(address[1]), components[1]);
+      Content content = parseContent(components[1]);
+      _spreadsheet.insertContent(Integer.parseInt(address[0]), Integer.parseInt(address[1]), content);
     } else
       throw new UnrecognizedEntryException("Wrong format in line: " + line);
   }

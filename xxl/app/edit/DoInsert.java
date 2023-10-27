@@ -27,7 +27,7 @@ class DoInsert extends Command<Spreadsheet> {
   try{
     Range range = _receiver.createRange(range_specification);
     for (Cell cell : range.getCells()){
-      _receiver.insertContent(cell.row(),cell.column(),content_specification); 
+      _receiver.insert(cell.row(),cell.column(),content_specification); 
     }
   } catch (UnrecognizedEntryException e) {
     throw new InvalidCellRangeException(range_specification);

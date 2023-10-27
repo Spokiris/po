@@ -135,10 +135,9 @@ public class Spreadsheet implements Serializable {
    * @param contentSpecification the specification in a string format of the content to put
    *        in the specified cell.
    */
-  public void insertContent(int row, int column, String contentSpecification) throws UnrecognizedEntryException {
+  public void insertContent(int row, int column, Content content) throws UnrecognizedEntryException {
       try{
           if(isCell(row, column)) {
-              Content content = new Parser().parseContent(contentSpecification);
               _cells[row-1][column-1].setContent(content);
               _changed = true;
           }
@@ -146,6 +145,15 @@ public class Spreadsheet implements Serializable {
           throw new UnrecognizedEntryException(e.getMessage());
       }
     }
+
+  public void insert(int row, int column, String contentSpecification) throws UnrecognizedEntryException{
+    try{
+      Content content = new Parser().parseContent(contentSpecification);
+      insertContent(row, column, content);
+    } catch(UnrecognizedEntryException e){
+      throw new UnrecognizedEntryException("");
+    }
+  }
 
 public Range createRange(String range) throws UnrecognizedEntryException {
     String[] rangeCoordinates;
