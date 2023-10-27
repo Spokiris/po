@@ -7,6 +7,11 @@ public class User {
     private HashSet<Spreadsheet> _spreadsheets;
 
     //Constructor 
+    public User(){
+        _name = "root";
+        _spreadsheets = new HashSet<Spreadsheet>();
+    }
+
     public User(String name){
         _name = name;
         _spreadsheets = new HashSet<Spreadsheet>();

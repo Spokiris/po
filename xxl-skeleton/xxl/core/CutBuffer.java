@@ -11,13 +11,16 @@ public class CutBuffer {
     }
     
     public void setBuffer(Range range){
-        _buffer = range.getCells();
-    } 
-
-    public void copy(Range range) {
         if (_buffer != null){
             clearBuff();
         }
+        ArrayList<Cell> buffer = range.getCells();
+        for (Cell cell : buffer){
+            _buffer.add(new Cell(cell));    
+        }
+    } 
+
+    public void copy(Range range) {
         setBuffer(range);
     }
     
@@ -36,7 +39,7 @@ public class CutBuffer {
         for (Cell cell : _buffer) {
             result += cell.toString()+"\n";
         }
-        return result.substring(0, result.length()-1);
+        return result;
     }
 
 }

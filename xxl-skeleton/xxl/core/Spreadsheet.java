@@ -83,7 +83,9 @@ public class Spreadsheet implements Serializable {
       for (int i = tempRange.getStartRow(); i <= tempRange.getEndRow(); i++) {     
         for (int j = tempRange.getStartColumn(); j <= tempRange.getEndColumn() ; j++) {         
           for (Cell cell : _cutBuffer.getBuffer()) {
-              _cells[i-1][j-1].setContent(cell.value());
+              if (cell.row() == i && cell.column() == j){
+                _cells[i-1][j-1].setContent(cell.content());
+              }
             }
           }
         }
@@ -176,6 +178,9 @@ public Range createRange(String range,Spreadsheet spreadsheet) throws Unrecogniz
     if (!isCell(firstRow, firstColumn) || !isCell(lastRow, lastColumn)) {
         throw new UnrecognizedEntryException("");
     }
-    return new Range(firstRow, firstColumn, lastRow, lastColumn, spreadsheet);
+    if(firstRow != lastRow && firstColumn != lastColumn){
+        throw new UnrecognizedEntryException("");
+    }
+    return new Range(firstRow, lastRow, firstColumn, lastColumn, spreadsheet);
     }
 }

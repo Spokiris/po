@@ -22,6 +22,12 @@ public class Cell {
         _content = content;
     }
 
+    public Cell(Cell cell){
+        _row = cell.row();
+        _column = cell.column();
+        _content = cell.content();
+    }
+
     public int row() {
         return _row;
     }
