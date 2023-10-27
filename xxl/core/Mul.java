@@ -8,7 +8,11 @@ public class Mul extends BinaryFunction {
 
     @Override
     protected Literal compute() {
+        try{
         return new LiteralInteger(getArg0().asInt() * getArg1().asInt());
+        } catch(ArithmeticException e){
+            return new LiteralString("#VALUE");
+        }
     }
 
     @Override

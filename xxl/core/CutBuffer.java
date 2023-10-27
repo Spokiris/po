@@ -1,8 +1,9 @@
 package xxl.core;
+import java.io.Serializable;
 
 import java.util.ArrayList;
-public class CutBuffer {
-    
+public class CutBuffer implements Serializable{
+    static final long serialVersionUID = 202010272136L;
     private ArrayList<Cell> _buffer;
 
     public CutBuffer() {

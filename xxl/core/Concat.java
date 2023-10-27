@@ -14,7 +14,11 @@ public class Concat extends IntervalFunction {
     public Literal compute(){
         Literal result = new LiteralString("");
         for(Cell cell : getRange().getCells()) {
+            try{
             result = new LiteralString(result.asString() + cell.value().asString());
+            } catch (ArithmeticException e){
+                continue;
+            }
         }
     return result;
     }

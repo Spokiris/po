@@ -19,9 +19,11 @@ public class Average extends IntervalFunction{
         
         
         for(Cell cell : getRange().getCells()) {
-                if (cell.value().isInt()) {
+                if (cell.value() != null && cell.value().isInt()) {
                     sum += cell.value().asInt();
                     count++;
+                } else {
+                    return new LiteralString("#VALUE");
                 }
             }
         return new LiteralInteger(result.asInt() + sum/count);

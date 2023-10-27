@@ -15,12 +15,17 @@ public class Coalesce extends IntervalFunction {
     public Literal compute() {
         Literal result = new LiteralString("");
         for(Cell cell : getRange().getCells()) {
-            if (cell.value().isString()) {
-                result = new LiteralString(result.asString());
-                return result;
+        try{
+            cell.value().asString();
+            result = new LiteralString(cell.value().asString());
+            return result;
+        }
+        catch(ArithmeticException e){
+            continue;
             }
         }
         return result;
     }
 }
+
 
