@@ -33,7 +33,7 @@ public class Spreadsheet implements Serializable {
     _cutBuffer = new CutBuffer();
   }
 
-  public boolean isCell(int row, int column) {
+  public boolean isCell(int row, int column)throws UnrecognizedEntryException{
     return row <= _rows && column <= _columns && row > 0 && column > 0;
   }
 
@@ -127,20 +127,6 @@ public class Spreadsheet implements Serializable {
   public Cell getCell(int row, int column) {
     return _cells[row-1][column-1];
   }
-  
-  public void insert(String range_specification, String content_specification)throws UnrecognizedEntryException{
-      try{
-          Range range = createRange(range_specification,this);
-          for (int i = range.getStartRow(); i <= range.getEndRow(); i++) {     
-              for (int j = range.getStartColumn(); j <= range.getEndColumn(); j++) {         
-                  insertContent(i,j,content_specification);
-              }
-          }
-          _changed = true;
-      }catch(UnrecognizedEntryException e){
-          throw new UnrecognizedEntryException(e.getMessage());
-      }
-  }
   /**
    * Insert specified content in specified address.
    *
@@ -152,7 +138,7 @@ public class Spreadsheet implements Serializable {
   public void insertContent(int row, int column, String contentSpecification) throws UnrecognizedEntryException {
       try{
           if(isCell(row, column)) {
-              Content content =new Parser().parseContent(contentSpecification);
+              Content content = new Parser().parseContent(contentSpecification);
               _cells[row-1][column-1].setContent(content);
               _changed = true;
           }

@@ -4,6 +4,8 @@ import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 import xxl.app.exception.InvalidCellRangeException;
 import xxl.core.Spreadsheet;
+import xxl.core.Range;
+import xxl.core.Cell;
 // FIXME import classes
 import xxl.core.exception.UnrecognizedEntryException;
 
@@ -23,8 +25,10 @@ class DoInsert extends Command<Spreadsheet> {
     String range_specification = stringField("range");
     String content_specification = stringField("content");
   try{
-    _receiver.insert(range_specification, content_specification);
-
+    Range range = createRange(range_specification);
+    for (Cell cell : range.getCells()){
+      insertContent(cell.row(),cell.column(),content_specification); 
+    }
   } catch (UnrecognizedEntryException e) {
     throw new InvalidCellRangeException(range_specification);
   }
