@@ -136,7 +136,7 @@ class Parser {
     switch (functionName) {
       case "CONCAT":
         return new Concat(range);
-      case "COASLECE":
+      case "COALESCE":
         return new Coalesce(range);
       case "PRODUCT":
         return new Product(range);
