@@ -96,15 +96,27 @@ public class Spreadsheet implements Serializable {
   Literal value(int row, int column) throws UnrecognizedEntryException {
     if(isCell(row, column)) {
       return _cells[row-1][column-1].value();
-        }
-        throw new UnrecognizedEntryException("Cell does not exist");
-    
+    }
+    throw new UnrecognizedEntryException("");
   }
 
   public Cell getCell(int row, int column) {
     return _cells[row-1][column-1];
   }
   
+  public void insert(String range_specification, String content_specification)throws UnrecognizedEntryException{
+    try{
+      Range range = createRange(range_specification);
+      for (int i = range.getStartRow(); i <= range.getEndRow(); i++) {     
+        for (int j = range.getStartColumn(); j <= range.getEndColumn(); j++) {         
+          insertContent(i,j,content_specification);
+        }
+      }
+      _changed = true;
+    }catch(UnrecognizedEntryException e){
+      throw new UnrecognizedEntryException(e.getMessage());
+    }
+  }
   /**
    * Insert specified content in specified address.
    *
@@ -113,10 +125,16 @@ public class Spreadsheet implements Serializable {
    * @param contentSpecification the specification in a string format of the content to put
    *        in the specified cell.
    */
-  public void insertContent(int row, int column, Content contentSpecification) throws UnrecognizedEntryException {
-    if(isCell(row, column)) {
-      _cells[row-1][column-1].setContent(contentSpecification);
+  public void insertContent(int row, int column, String contentSpecification) throws UnrecognizedEntryException {
+    try{
+      if(isCell(row, column)) {
+      Parser parser = new Parser();
+      Content content = parser.parseContent(contentSpecification);
+      _cells[row-1][column-1].setContent(content);
       _changed = true;
+    }
+    }catch(UnrecognizedEntryException e){
+      throw new UnrecognizedEntryException(e.getMessage());
     }
   }    
 
