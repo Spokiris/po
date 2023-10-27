@@ -1,8 +1,10 @@
 package xxl.core;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Range {
+public class Range implements Serializable{
 
+    static final long serialVersionUID = 202010272136L;
     private int _startRow;
     private int _endRow;
     private int _startColumn;
