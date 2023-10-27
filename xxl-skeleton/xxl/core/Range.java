@@ -11,23 +11,7 @@ public class Range {
 
     private ArrayList<Cell> _Rcells;
 
-    public Range(String range, Spreadsheet spreadsheet) {
-        String[] parts = range.split(":");
-        String[] start = parts[0].split("(?<=\\D)(?=\\d)");
-        String[] end = parts[1].split("(?<=\\D)(?=\\d)");
-        _startRow = Integer.parseInt(start[1]);
-        _endRow = Integer.parseInt(end[1]);
-        _startColumn = (int) start[0].charAt(0) - 64;
-        _endColumn = (int) end[0].charAt(0) - 64;
-        _Rcells = new ArrayList<Cell>();
-        for (int i = _startRow; i <= _endRow; i++) {
-            for (int j = _startColumn; j <= _endColumn; j++) {
-                _Rcells.add(_spreadsheet.getCell(i, j));
-            }
-        }
-    }
-
-    public Range(int startRow, int endRow, int startColumn, int endColumn, Spreadsheet spreadsheet) {
+       public Range(int startRow, int endRow, int startColumn, int endColumn, Spreadsheet spreadsheet) {
         _startRow = startRow;
         _endRow = endRow;
         _startColumn = startColumn;
@@ -58,20 +42,15 @@ public class Range {
     }
 
     public int getRows() {
-        return _endRow - _startRow + 1;
+        return _endRow - _startRow;
     }
 
     public int getColumns() {
-        return _endColumn - _startColumn + 1;
+        return _endColumn - _startColumn;
     }
     
     public ArrayList<Cell> getCells() {
         return _Rcells;
-    }
-
-    public void addCell(Cell cell) {
-        _Rcells.clear();
-        _Rcells.add(cell);
     }
 
     public String toString(){
