@@ -10,7 +10,6 @@ import java.io.ObjectInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
@@ -54,36 +53,26 @@ public class Calculator{
    * @throws MissingFileAssociationException if the current network does not have a file.
    * @throws IOException if there is some error while serializing the state of the network to disk.
    */
-  public void save() throws IOException, FileNotFoundException, MissingFileAssociationException {
-    if (_filename == null){
-      throw new FileNotFoundException();
-    }else 
-    { try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(_filename))){
-              getSpreadsheet().setState(false);
-              out.writeObject(_spreadsheet);
-              out.close();
-            }
-        }
+  public void save(String file) throws IOException {
+    ObjectOutputStream obOut = null;
+    try {
+    obOut = new ObjectOutputStream(new FileOutputStream(file));
+    obOut.writeObject(_spreadsheet);
+    } finally {
+    if (obOut != null)
+    obOut.close();
+    }
     }
 
-  public void load(String filename) throws FileNotFoundException, IOException, ClassNotFoundException{
-    try{
-      FileInputStream fileIn = new FileInputStream(filename);
-      ObjectInputStream in = new ObjectInputStream(fileIn);
-      Spreadsheet spreadsheet = (Spreadsheet) in.readObject();
-      in.close();
-      fileIn.close();
-      _filename = filename;
-      setSpreadsheet(spreadsheet);
-    }
-    catch (FileNotFoundException e) {
-      throw new FileNotFoundException(filename);
-    }
-    catch (IOException e) {
-      throw new IOException();
-    }
-    catch (ClassNotFoundException e) {
-      throw new ClassNotFoundException();
+  public Spreadsheet load(String inputFilename) throws IOException, ClassNotFoundException {
+    ObjectInputStream objIn = null;
+    try {
+      objIn = new ObjectInputStream(new FileInputStream(inputFilename));
+      Spreadsheet anObject = (Spreadsheet) objIn.readObject();
+      return anObject;
+    } finally {
+      if (objIn != null)
+        objIn.close();
     }
   }
   
@@ -98,7 +87,7 @@ public class Calculator{
    */
   public void saveAs(String filename) throws FileNotFoundException, MissingFileAssociationException, IOException {
     _filename = filename;
-    save();
+    save(filename);
   }
     
   

@@ -1,8 +1,10 @@
 package xxl.core;
 
+import java.io.Serializable;
+
 import xxl.core.exception.UnrecognizedEntryException;
 
-public class Cell {
+public class Cell implements Serializable{
     private int _row;
     private int _column;
     private Content _content;
