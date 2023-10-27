@@ -5,8 +5,7 @@ Menu Principal
 4 - Menu de Edição
 5 - Menu de Consultas
 0 - Sair
-Escolha uma opção: 4
-Menu de Edição
+Escolha uma opção: Menu de Edição
 1 - Visualizar
 2 - Inserir
 3 - Copiar
@@ -15,9 +14,7 @@ Menu de Edição
 6 - Colar
 7 - Mostrar 'cut buffer'
 0 - Sair
-Escolha uma opção: 1
-Especifique a gama (startline;startcol:endline;endcol): 2;1:2;3
-2;1|25
+Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): 2;1|25
 2;2|43
 2;3|'123456abcdef=CONCAT(1;1:1;4)
 Menu de Edição
@@ -29,14 +26,12 @@ Menu de Edição
 6 - Colar
 7 - Mostrar 'cut buffer'
 0 - Sair
-Escolha uma opção: 0
-Menu Principal
+Escolha uma opção: Menu Principal
 1 - Novo
 2 - Abrir
 3 - Guardar
 4 - Menu de Edição
 5 - Menu de Consultas
 0 - Sair
+Escolha uma opção: Número inválido!
 Escolha uma opção: 
-Número inválido!
-Escolha uma opção: 0

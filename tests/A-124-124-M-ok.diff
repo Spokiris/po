@@ -1,0 +1,31 @@
+*** tests/A-124-124-M-ok.out	2023-10-19 17:08:13.000000000 +0100
+--- tests/A-124-124-M-ok.outhyp	2023-10-27 13:56:11.235878879 +0100
+***************
+*** 1,25 ****
+- Menu Principal
+- 1 - Novo
+- 2 - Abrir
+- 3 - Guardar
+- 4 - Menu de Edição
+- 5 - Menu de Consultas
+- 0 - Sair
+- Escolha uma opção: Menu de Consultas
+- 1 - Procurar valores
+- 2 - Procurar funções
+- 0 - Sair
+- Escolha uma opção: Função a procurar: 1;3|-1=SUB(2,3)
+- 4;3|-3=SUB(2,5)
+- Menu de Consultas
+- 1 - Procurar valores
+- 2 - Procurar funções
+- 0 - Sair
+- Escolha uma opção: Menu Principal
+- 1 - Novo
+- 2 - Abrir
+- 3 - Guardar
+- 4 - Menu de Edição
+- 5 - Menu de Consultas
+- 0 - Sair
+- Escolha uma opção: 
+\ No newline at end of file
+--- 0 ----

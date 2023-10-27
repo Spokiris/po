@@ -5,8 +5,7 @@ Menu Principal
 4 - Menu de Edição
 5 - Menu de Consultas
 0 - Sair
-Escolha uma opção: 4
-Menu de Edição
+Escolha uma opção: Menu de Edição
 1 - Visualizar
 2 - Inserir
 3 - Copiar
@@ -15,32 +14,27 @@ Menu de Edição
 6 - Colar
 7 - Mostrar 'cut buffer'
 0 - Sair
-Escolha uma opção: 0
-Menu Principal
+Escolha uma opção: Menu Principal
 1 - Novo
 2 - Abrir
 3 - Guardar
 4 - Menu de Edição
 5 - Menu de Consultas
 0 - Sair
-Escolha uma opção: 5
+Escolha uma opção: Menu de Consultas
+1 - Procurar valores
+2 - Procurar funções
+0 - Sair
+Escolha uma opção: Função a procurar: 2;3|48=ADD(2;2,5)
 Menu de Consultas
 1 - Procurar valores
 2 - Procurar funções
 0 - Sair
-Escolha uma opção: 2
-Função a procurar: ADD
-2;3|48=ADD(2;2,5)
-Menu de Consultas
-1 - Procurar valores
-2 - Procurar funções
-0 - Sair
-Escolha uma opção: 0
-Menu Principal
+Escolha uma opção: Menu Principal
 1 - Novo
 2 - Abrir
 3 - Guardar
 4 - Menu de Edição
 5 - Menu de Consultas
 0 - Sair
-Escolha uma opção: 0
+Escolha uma opção: 
