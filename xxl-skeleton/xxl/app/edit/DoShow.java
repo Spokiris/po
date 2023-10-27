@@ -22,8 +22,9 @@ class DoShow extends Command<Spreadsheet> {
   protected final void execute() throws CommandException {
     String rangeDescription = stringField("range");
     try {
-      Range range = _receiver.createRange(rangeDescription);
-      _display.popup(range.toString());
+      Range range = _receiver.createRange(rangeDescription,_receiver);
+      _display.addLine(range);
+      _display.display();
     } catch (ArrayIndexOutOfBoundsException | UnrecognizedEntryException e){
       throw new InvalidCellRangeException(rangeDescription);
     }

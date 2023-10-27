@@ -9,10 +9,11 @@ public class Range {
     private int _endRow;
     private int _startColumn;
     private int _endColumn;
+    private Spreadsheet _spreadsheet;
 
-    private List<Cell> _Rcells = new ArrayList<>();
+    private List<Cell> _Rcells;
 
-    public Range(String range) {
+    public Range(String range, Spreadsheet spreadsheet) {
         String[] parts = range.split(":");
         String[] start = parts[0].split("(?<=\\D)(?=\\d)");
         String[] end = parts[1].split("(?<=\\D)(?=\\d)");
@@ -20,13 +21,26 @@ public class Range {
         _endRow = Integer.parseInt(end[1]);
         _startColumn = (int) start[0].charAt(0) - 64;
         _endColumn = (int) end[0].charAt(0) - 64;
+        _Rcells = new ArrayList<Cell>();
+        for (int i = _startRow; i <= _endRow; i++) {
+            for (int j = _startColumn; j <= _endColumn; j++) {
+                _Rcells.add(_spreadsheet.getCell(i, j));
+            }
+        }
     }
 
-    public Range(int startRow, int endRow, int startColumn, int endColumn) {
+    public Range(int startRow, int endRow, int startColumn, int endColumn, Spreadsheet spreadsheet) {
         _startRow = startRow;
         _endRow = endRow;
         _startColumn = startColumn;
         _endColumn = endColumn;
+        _spreadsheet = spreadsheet;
+        _Rcells = new ArrayList<Cell>();
+        for (int i = _startRow; i <= _endRow; i++) {
+            for (int j = _startColumn; j <= _endColumn; j++) {
+                _Rcells.add(_spreadsheet.getCell(i, j));
+            }
+        }
     }
 
     public int getStartRow() {
@@ -58,14 +72,15 @@ public class Range {
     }
 
     public void addCell(Cell cell) {
+        _Rcells.clear();
         _Rcells.add(cell);
     }
 
-    public String toString(){ //FIXME
+    public String toString(){
         String output = "";
         for (Cell cell : _Rcells) {
             if (cell.content() != null) {
-            output += cell.toString() + "\n";
+            output += cell.toString()+"\n";
             }
         }
         return output; 

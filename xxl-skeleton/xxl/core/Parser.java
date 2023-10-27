@@ -131,7 +131,7 @@ class Parser {
 
   private Content parseIntervalFunction(String functionName, String rangeDescription)
     throws UnrecognizedEntryException {
-    Range range = _spreadsheet.createRange(rangeDescription);
+    Range range = _spreadsheet.createRange(rangeDescription, _spreadsheet);
     switch (functionName) {
       case "CONCAT":
         return new Concat(range);

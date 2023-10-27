@@ -106,7 +106,7 @@ public class Spreadsheet implements Serializable {
   
   public void insert(String range_specification, String content_specification)throws UnrecognizedEntryException{
     try{
-      Range range = createRange(range_specification);
+      Range range = createRange(range_specification,this);
       for (int i = range.getStartRow(); i <= range.getEndRow(); i++) {     
         for (int j = range.getStartColumn(); j <= range.getEndColumn(); j++) {         
           insertContent(i,j,content_specification);
@@ -148,7 +148,7 @@ public class Spreadsheet implements Serializable {
     }
   }
 
-public Range createRange(String range) throws UnrecognizedEntryException {
+public Range createRange(String range,Spreadsheet spreadsheet) throws UnrecognizedEntryException {
   String[] rangeCoordinates;
   int firstRow, firstColumn, lastRow, lastColumn;
   
@@ -166,7 +166,7 @@ public Range createRange(String range) throws UnrecognizedEntryException {
   if (!isCell(firstRow, firstColumn) || !isCell(lastRow, lastColumn)) {
     throw new UnrecognizedEntryException("");
   }
-  return new Range(firstRow, firstColumn, lastRow, lastColumn);
+  return new Range(firstRow, firstColumn, lastRow, lastColumn,spreadsheet);
 }
 
 }
