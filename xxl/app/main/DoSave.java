@@ -23,15 +23,13 @@ class DoSave extends Command<Calculator> {
   protected final void execute() throws CommandException{
       try{
           _receiver.save();
-          } catch (FileNotFoundException e1) {
+          } catch (IOException | MissingFileAssociationException e1) {
               try{
                   String filename = Form.requestString(Message.newSaveAs());
                   _receiver.saveAs(filename);
               } catch (IOException | MissingFileAssociationException e){
                   throw new FileOpenFailedException(e);
               }
-      } catch (IOException e1) {
-          throw new FileOpenFailedException(e1);
-      }
+        }
   }
 }

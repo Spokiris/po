@@ -54,22 +54,17 @@ public class Calculator{
    * @throws MissingFileAssociationException if the current network does not have a file.
    * @throws IOException if there is some error while serializing the state of the network to disk.
    */
-  public void save() throws IOException, FileNotFoundException {
-      try{
-        FileOutputStream fileOut = new FileOutputStream(_filename);
-        ObjectOutputStream out = new ObjectOutputStream(fileOut);
-        Serializable object = _spreadsheet;
-        out.writeObject(object);
-        out.close();
-        fileOut.close();
-      }
-      catch (FileNotFoundException e) {
-        throw new FileNotFoundException(_filename);
-      }
-      catch (IOException e) {
-        throw new IOException();
-      }
-  }
+  public void save() throws IOException, FileNotFoundException, MissingFileAssociationException {
+    if (_filename == null){
+      saveAs(_filename);
+    }else 
+    { try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(_filename))){
+              getSpreadsheet().setState(false);
+              out.writeObject(_spreadsheet);
+              out.close();
+            }
+        }
+    }
 
   public void load(String filename) throws FileNotFoundException, IOException, ClassNotFoundException{
     try{
@@ -102,17 +97,10 @@ public class Calculator{
    * @throws IOException if there is some error while serializing the state of the network to disk.
    */
   public void saveAs(String filename) throws FileNotFoundException, MissingFileAssociationException, IOException {
-    try{
-      _filename = filename;
-      save();
-    }
-    catch (FileNotFoundException e) {
-      throw new FileNotFoundException(filename);
-    }
-    catch (IOException e) {
-      throw new IOException();
-    }
+    _filename = filename;
+    save();
   }
+    
   
   /**
    * Read text input file and create domain entities.

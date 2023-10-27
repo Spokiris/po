@@ -52,6 +52,9 @@ public class Spreadsheet implements Serializable {
   public CutBuffer getCutBuffer() {
     return _cutBuffer;
   }
+  public void setState(boolean state) {
+    _changed = state;
+  }
 
   public void copy(Range range) throws UnrecognizedEntryException {
       _cutBuffer.copy(range);
