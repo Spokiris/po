@@ -89,11 +89,11 @@ class Parser {
   // contentSpecification is what comes after '='
   private Content parseContentExpression(String contentSpecification) throws UnrecognizedEntryException /*, more exceptions */ {
     if (contentSpecification.contains("("))
-      return parseFunction(contentSpecification);
+        return parseFunction(contentSpecification);
     // It is a reference
     String[] address = contentSpecification.split(";");
-    return new Reference(Integer.parseInt(address[0].trim()), Integer.parseInt(address[1]),_spreadsheet);
-  }
+    return new Reference(Integer.parseInt(address[0].trim()), Integer.parseInt(address[1].trim()), _spreadsheet);
+}
 
   private Content parseFunction(String functionSpecification) throws UnrecognizedEntryException /*, more exceptions */ {
     String[] components = functionSpecification.split("[()]");
@@ -122,13 +122,13 @@ class Parser {
   }
 
   private Content parseArgumentExpression(String argExpression) throws UnrecognizedEntryException {
-    if (argExpression.contains(";")  && argExpression.charAt(0) != '\'') {
-      String[] address = argExpression.split(";");
-      return new Reference(Integer.parseInt(address[0].trim()), Integer.parseInt(address[1]),_spreadsheet);
-      // pode ser diferente do anterior em parseContentExpression
-    } else
-      return parseLiteral(argExpression);
-  }
+    if (argExpression.contains(";") && argExpression.charAt(0) != '\'') {
+        String[] address = argExpression.split(";");
+        return new Reference(Integer.parseInt(address[0].trim()), Integer.parseInt(address[1].trim()), _spreadsheet);
+    } else {
+        return parseLiteral(argExpression);
+    }
+}
 
   private Content parseIntervalFunction(String functionName, String rangeDescription)
     throws UnrecognizedEntryException{
