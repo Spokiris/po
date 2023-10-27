@@ -25,8 +25,8 @@ public class Spreadsheet implements Serializable {
     _changed = false;
     _users = new ArrayList<User>();
     _cells = new Cell[_rows][_columns];
-    for (int i = 1; i <= _rows; i++) {
-      for (int j = 1; j <= _columns; j++) {
+    for (int i = 0; i < _rows; i++) {
+      for (int j = 0; j < _columns; j++) {
         _cells[i][j] = new Cell(i,j);
       }
     }
