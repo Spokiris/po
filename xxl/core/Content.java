@@ -6,10 +6,14 @@ public abstract class Content implements java.io.Serializable{
     abstract Literal value();
 
     public String asString() {
+        if (value()==null)
+            return "";
         return value().asString();
     }
 
     public int asInt() {
+        if (value()==null)
+            return 0;
         return value().asInt();
     }
 }
