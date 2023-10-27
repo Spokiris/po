@@ -1,7 +1,9 @@
 package xxl.core;
-public abstract class Function extends Content {
+
+
+public abstract class Function extends Content{
     private String _name;
-    
+
     protected abstract Literal compute();
 
     public Function(String name) {
