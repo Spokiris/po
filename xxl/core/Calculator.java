@@ -56,7 +56,7 @@ public class Calculator{
    */
   public void save() throws IOException, FileNotFoundException, MissingFileAssociationException {
     if (_filename == null){
-      saveAs(_filename);
+      throw new FileNotFoundException();
     }else 
     { try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(_filename))){
               getSpreadsheet().setState(false);
