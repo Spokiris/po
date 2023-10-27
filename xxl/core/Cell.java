@@ -61,14 +61,23 @@ public class Cell implements Serializable{
     }
 
     Literal value() {
+        if (_content == null) {
+            return null;
+        }
         return _content.value();
     }
 
     public String asString() {
+        if (_content == null) {
+            return "";
+        }
         return _content.asString();
     }
 
     public int asInt() {
+        if (_content == null) {
+            return 0;
+        }
         return _content.asInt();
     }
 
