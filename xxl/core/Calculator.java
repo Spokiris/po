@@ -64,12 +64,11 @@ public class Calculator{
     }
     }
 
-  public Spreadsheet load(String inputFilename) throws IOException, ClassNotFoundException {
+  public void load(String inputFilename) throws IOException, ClassNotFoundException {
     ObjectInputStream objIn = null;
     try {
       objIn = new ObjectInputStream(new FileInputStream(inputFilename));
-      Spreadsheet anObject = (Spreadsheet) objIn.readObject();
-      return anObject;
+      _spreadsheet = (Spreadsheet) objIn.readObject();
     } finally {
       if (objIn != null)
         objIn.close();
