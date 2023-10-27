@@ -50,7 +50,7 @@ class Parser {
   }
 
   private void parseLine(String line) throws UnrecognizedEntryException /*, more exceptions? */{
-    String[] components = line.split("|");
+    String[] components = line.split("\\|");
 
     if (components.length == 1) // do nothing
       return;
