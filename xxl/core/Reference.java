@@ -9,9 +9,6 @@ public class Reference extends Content{
         _row = row;
         _column = column;
         _cell = spreadsheet.getCell(row, column);
-        ConcreteSubject subject = ConcreteSubject.getInstance();
-        subject.addObserver(this);
-        subject.notifyObservers();
     }   
 
     public Reference(String substring, Spreadsheet spreadsheet) {
@@ -19,13 +16,6 @@ public class Reference extends Content{
         _row = Integer.parseInt(parts[0]);
         _column = Integer.parseInt(parts[1]);
         _cell = spreadsheet.getCell(_row, _column);
-        ConcreteSubject subject = ConcreteSubject.getInstance();
-        subject.addObserver(this);
-        subject.notifyObservers();
-    }
-
-    public void update(){
-        value().update();
     }
 
     public int row() {

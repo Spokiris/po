@@ -9,8 +9,6 @@ public abstract class IntervalFunction extends Function {
         super(name);
         _name = name;
         _range = range;
-        ConcreteSubject subject = ConcreteSubject.getInstance();
-        subject.notifyObservers();
     }
     
     protected abstract Literal compute();

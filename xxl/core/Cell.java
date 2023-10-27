@@ -40,17 +40,14 @@ public class Cell {
     }
 
     void setContent(Content content) {
-        ConcreteSubject.getInstance().setStateChanged(true);
         _content = content;
     }
     
     void setContent(String content) throws UnrecognizedEntryException {
-        ConcreteSubject.getInstance().setStateChanged(true);
         _content = asContent(content);
     }
 
     void setContent() {
-        ConcreteSubject.getInstance().setStateChanged(true);
         _content = null;
     }
 
