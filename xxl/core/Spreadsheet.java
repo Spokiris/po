@@ -69,12 +69,26 @@ public class Spreadsheet implements Serializable {
   }
 
   public void paste(Range range) throws UnrecognizedEntryException {
-      ArrayList<Cell> cells = _cutBuffer.paste();
-      if(cells != null && cells.size() == 1){
-        
+    ArrayList<Cell> cells = _cutBuffer.paste();
+    if (range != null) {
+        if (range.getCells().size() == 1) {
+            for (Cell cell : cells) {
+                if (isCell(cell.row(), cell.column())) {
+                  insertContent(cell.row(), cell.column(), cell.content());
+                }
+            }
+      } else if (range.getCells().size() == cells.size()) {
+        int i = 0;
+        for (Cell cell : range.getCells()) {
+          insertContent(cell.row(), cell.column(), cells.get(i).content());
+          i++;
+        }
+      } else {
+        throw new UnrecognizedEntryException("");
       }
-  } 
-}
+    }
+  }
+
 
   public void cut(Range range) throws UnrecognizedEntryException{
     try{

@@ -24,9 +24,7 @@ class DoCut extends Command<Spreadsheet> {
     String range_specification = stringField("range");
     try{
       Range range = _receiver.createRange(range_specification);
-      for (Cell cell : range.getCells()){
-        _receiver.cut(cell.row(),cell.column()); 
-      }
+      _receiver.cut(range);
     } catch (UnrecognizedEntryException e) {
       throw new InvalidCellRangeException(range_specification);
     }
