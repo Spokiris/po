@@ -145,7 +145,7 @@ public class Spreadsheet implements Serializable {
 
   public void insert(int row, int column, String contentSpecification) throws UnrecognizedEntryException{
     try{
-      Content content = new Parser().parseContent(contentSpecification);
+      Content content = new Parser(this).parseContent(contentSpecification);
       insertContent(row, column, content);
     } catch(UnrecognizedEntryException e){
       throw new UnrecognizedEntryException("");
