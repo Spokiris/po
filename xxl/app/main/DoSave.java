@@ -1,12 +1,9 @@
 package xxl.app.main;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import xxl.app.exception.FileOpenFailedException;
 import xxl.core.Calculator;
 import xxl.core.exception.MissingFileAssociationException;
-import pt.tecnico.uilib.forms.Form;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 
@@ -22,14 +19,14 @@ class DoSave extends Command<Calculator> {
   @Override
   protected final void execute() throws CommandException{
       try{
-          _receiver.save();
-          } catch (IOException | MissingFileAssociationException e1) {
-              try{
-                  String filename = Form.requestString(Message.newSaveAs());
-                  _receiver.saveAs(filename);
-              } catch (IOException | MissingFileAssociationException e){
-                  throw new FileOpenFailedException(e);
-              }
+        if(_receiver.getFilename() == null){
+            addStringField("filename",Message.newSaveAs());
+        } else {
+            addStringField("filename",Message.saveAs());
         }
+        _receiver.saveAs(stringField("filename"));
+      } catch (MissingFileAssociationException | IOException e){
+        e.printStackTrace();
+      }
   }
 }
