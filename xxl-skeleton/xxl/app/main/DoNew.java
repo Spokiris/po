@@ -11,8 +11,9 @@ class DoNew extends Command<Calculator> {
 
   DoNew(Calculator receiver) {
     super(Label.NEW, receiver);
-    addIntegerField("columns", "colunas=");
     addIntegerField("rows", "linhas=");
+    addIntegerField("columns", "colunas=");
+    
   }
   
   @Override
