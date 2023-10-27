@@ -6,6 +6,8 @@ import xxl.app.exception.InvalidCellRangeException;
 import xxl.core.Spreadsheet;
 // FIXME import classes
 import xxl.core.exception.UnrecognizedEntryException;
+import xxl.core.Range;
+import xxl.core.Cell;
 
 /**
  * Cut command.
@@ -21,7 +23,10 @@ class DoCut extends Command<Spreadsheet> {
   protected final void execute() throws CommandException {
     String range_specification = stringField("range");
     try{
-    _receiver.cut(range_specification);
+      Range range = _receiver.createRange(range_specification);
+      for (Cell cell : range.getCells()){
+        _receiver.cut(cell.row(),cell.column()); 
+      }
     } catch (UnrecognizedEntryException e) {
       throw new InvalidCellRangeException(range_specification);
     }

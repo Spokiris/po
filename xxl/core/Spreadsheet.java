@@ -53,50 +53,30 @@ public class Spreadsheet implements Serializable {
     return _cutBuffer;
   }
 
-  public void copy(String range) throws UnrecognizedEntryException {
-    try{
-      Range tempRange = createRange(range);
-      _cutBuffer.copy(tempRange);
-    }catch(UnrecognizedEntryException e){
-      throw new UnrecognizedEntryException(e.getMessage());
-    }
+  public void copy(Range range) throws UnrecognizedEntryException {
+      _cutBuffer.copy(range);
   }
 
-  public void clear(String range) throws UnrecognizedEntryException{
-    try{
-      Range tempRange = createRange(range);
-    if(inRange(tempRange)) {
-      for (int i = tempRange.getStartRow(); i <= tempRange.getEndRow(); i++) {     
-        for (int j = tempRange.getStartColumn(); j <= tempRange.getEndColumn() ; j++) {         
-            _cells[i-1][j-1].setContent(); 
-          }
-        }
+  public void clear(Range range) throws UnrecognizedEntryException{
+    if (range != null){
+      ArrayList<Cell> cells = range.getCells();
+      for (Cell cell : cells){
+        cell.setContent();
       }
-    }catch(UnrecognizedEntryException e){
-      throw new UnrecognizedEntryException(e.getMessage());
+    }else{
+      throw new UnrecognizedEntryException("");
     }
   }
 
-  public void paste(String range) throws UnrecognizedEntryException {
-    try{
-      Range tempRange = createRange(range);
-    if(inRange(tempRange)){
-      for (int i = tempRange.getStartRow(); i <= tempRange.getEndRow(); i++) {     
-        for (int j = tempRange.getStartColumn(); j <= tempRange.getEndColumn() ; j++) {         
-          for (Cell cell : _cutBuffer.getBuffer()) {
-              if (cell.row() == i && cell.column() == j){
-                _cells[i-1][j-1].setContent(cell.content());
-              }
-            }
-          }
-        }
+  public void paste(Range range) throws UnrecognizedEntryException {
+      ArrayList<Cell> cells = _cutBuffer.paste();
+      if(cells != null && cells.size() == 1){
+        
       }
-    } catch (UnrecognizedEntryException e){
-      throw new UnrecognizedEntryException(e.getMessage());
-    }
-  }
+  } 
+}
 
-  public void cut(String range) throws UnrecognizedEntryException{
+  public void cut(Range range) throws UnrecognizedEntryException{
     try{
       copy(range);
       clear(range);

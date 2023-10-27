@@ -23,7 +23,8 @@ class DoCopy extends Command<Spreadsheet> {
   protected final void execute() throws CommandException {
     String range_specification = stringField("range");
     try{
-    _receiver.copy(range_specification);
+        Range range = _receiver.createRange(range_specification);
+        _receiver.copy(range);
     } catch (UnrecognizedEntryException e) {
       throw new InvalidCellRangeException(range_specification);
     }

@@ -6,6 +6,9 @@ import xxl.core.Spreadsheet;
 
 import xxl.core.exception.UnrecognizedEntryException;
 import xxl.app.exception.InvalidCellRangeException;
+
+import xxl.core.Cell;
+import xxl.core.Range;
 // FIXME import classes
 
 /**
@@ -22,7 +25,8 @@ class DoPaste extends Command<Spreadsheet> {
   protected final void execute() throws CommandException {
     String range_specification = stringField("range");
     try{
-    _receiver.paste(range_specification);
+        Range range = _receiver.createRange(range_specification);
+        _receiver.paste(range);
     } catch (UnrecognizedEntryException e) {
       throw new InvalidCellRangeException(range_specification);
     }
