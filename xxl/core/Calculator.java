@@ -100,8 +100,8 @@ public class Calculator{
   public void importFile(String filename) throws ImportFileException {
     try {
         Parser parser = new Parser(_spreadsheet);
-        Spreadsheet spreadsheet = parser.parseFile(filename);
-        _spreadsheet = spreadsheet;
+        _spreadsheet = parser.parseFile(filename);
+        return;
     } 
     catch (IOException | UnrecognizedEntryException e) {
       throw new ImportFileException(filename, e);
