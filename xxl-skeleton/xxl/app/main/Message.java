@@ -50,11 +50,11 @@ interface Message {
   
   /** @return string with prompt for number of lines. */
   static String lines() {
-    return "linhas=";
+    return "Especifique o número de linhas da folha: ";
   }
 
   /** @return string with prompt for number of columns. */
   static String columns() {
-    return "colunas=";
+    return "Especifique o número de colunas da folha: ";
   }
 }
