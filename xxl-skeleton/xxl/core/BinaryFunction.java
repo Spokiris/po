@@ -15,7 +15,7 @@ public abstract class BinaryFunction extends Function {
     }
     
     public String toString() {
-        return compute() + "=" + _name + "(" + _arg0 + "," + _arg1 + ")";
+        return "=" + _name + "(" + _arg0 + "," + _arg1 + ")";
     }
 
     public Content getArg0() {

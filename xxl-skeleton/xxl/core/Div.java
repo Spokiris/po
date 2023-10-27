@@ -14,4 +14,9 @@ public class Div extends BinaryFunction {
             return new LiteralString("#VALUE");
         }
     }
+
+    @Override
+    public String toString() {
+        return compute().asString() + super.toString();
+    }
 }

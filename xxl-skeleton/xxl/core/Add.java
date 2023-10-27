@@ -12,4 +12,8 @@ public class Add extends BinaryFunction {
         return new LiteralInteger(getArg0().asInt() + getArg1().asInt());
     }
 
+    @Override
+    public String toString() {
+        return compute().asString() + super.toString();
+    }
 }
