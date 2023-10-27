@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class ConcreteSubject implements Subject {
     private static ConcreteSubject _instance = null;
     private ArrayList<Observer> _observers = new ArrayList<Observer>();
+    private boolean _stateChanged = false;
 
     private ConcreteSubject(){
     }
@@ -21,9 +22,19 @@ public class ConcreteSubject implements Subject {
         _observers.remove(observer);
     }
 
+    public void setStateChanged(boolean stateChanged) {
+        _stateChanged = stateChanged;
+    }
+
     public void notifyObservers() {
+        if (_observers.isEmpty()) {
+            return;
+        }
+        if (_stateChanged){
         for (Observer observer : _observers) {
             observer.update();
+            }
+            _stateChanged = false;
         }
     }
 }
