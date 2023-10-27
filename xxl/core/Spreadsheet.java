@@ -34,7 +34,7 @@ public class Spreadsheet implements Serializable {
   }
 
   public boolean isCell(int row, int column)throws UnrecognizedEntryException{
-    return row <= _rows && column <= _columns && row > 0 && column > 0;
+    return row <= _rows && column <= _columns;
   }
 
   public int getRows() {
