@@ -3,19 +3,29 @@ package xxl.core;
 public class Reference extends Content{
     private int _row;
     private int _column;
-    private Spreadsheet _spreadsheet;
+    private Cell _cell;
 
     public Reference(int row, int column, Spreadsheet spreadsheet) {
         _row = row;
         _column = column;
-        _spreadsheet = spreadsheet;
+        _cell = spreadsheet.getCell(row, column);
+        ConcreteSubject subject = ConcreteSubject.getInstance();
+        subject.addObserver(this);
+        subject.notify();
     }   
 
     public Reference(String substring, Spreadsheet spreadsheet) {
         String[] parts = substring.split(";");
         _row = Integer.parseInt(parts[0]);
         _column = Integer.parseInt(parts[1]);
-        _spreadsheet = spreadsheet;
+        _cell = spreadsheet.getCell(_row, _column);
+        ConcreteSubject subject = ConcreteSubject.getInstance();
+        subject.addObserver(this);
+        subject.notify();
+    }
+
+    public void update(){
+        value().update();
     }
 
     public int row() {
@@ -26,16 +36,16 @@ public class Reference extends Content{
         return _column;
     }
 
-    public Spreadsheet spreadsheet() {
-        return _spreadsheet;
-    }   
-
     public String toString() {
         return  "=" + _row + ";" + _column ;
+    }
+
+    public Cell getCell(){
+        return _cell;
     }
     
     @Override
     Literal value(){
-        return _spreadsheet.getCell(_row, _column).value();
+        return _cell.value();
     }
 }

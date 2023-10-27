@@ -12,6 +12,8 @@ public abstract class BinaryFunction extends Function {
         _name = name;
         _arg0 = arg0;
         _arg1 = arg1;
+        ConcreteSubject subject = ConcreteSubject.getInstance();
+        subject.notify();
     }
     
     public String toString() {

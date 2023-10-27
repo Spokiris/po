@@ -11,7 +11,6 @@ import java.util.Comparator;
  * Class representing a spreadsheet.
  */
 public class Spreadsheet implements Serializable {
-  @Serial
   private static final long serialVersionUID = 202308312359L;
   private int _rows;
   private int _columns;

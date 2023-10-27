@@ -13,7 +13,6 @@ public class Cell {
         _row = row;
         _column = column;
         _content = null;
-        
     }
 
     public Cell(int row, int column, Content content) {
