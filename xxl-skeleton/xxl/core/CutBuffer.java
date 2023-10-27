@@ -36,7 +36,7 @@ public class CutBuffer {
         for (Cell cell : _buffer) {
             result += cell.toString()+"\n";
         }
-        return result;
+        return result.substring(0, result.length()-1);
     }
 
 }
