@@ -5,7 +5,8 @@ Menu Principal
 4 - Menu de Edição
 5 - Menu de Consultas
 0 - Sair
-Escolha uma opção: Menu de Edição
+Escolha uma opção: 4
+Menu de Edição
 1 - Visualizar
 2 - Inserir
 3 - Copiar
@@ -14,7 +15,9 @@ Escolha uma opção: Menu de Edição
 6 - Colar
 7 - Mostrar 'cut buffer'
 0 - Sair
-Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): 6;1|
+Escolha uma opção: 1
+Especifique a gama (startline;startcol:endline;endcol): 6;1:6;4
+6;1|
 6;2|
 6;3|
 6;4|
@@ -27,11 +30,12 @@ Menu de Edição
 6 - Colar
 7 - Mostrar 'cut buffer'
 0 - Sair
-Escolha uma opção: Menu Principal
+Escolha uma opção: 0
+Menu Principal
 1 - Novo
 2 - Abrir
 3 - Guardar
 4 - Menu de Edição
 5 - Menu de Consultas
 0 - Sair
-Escolha uma opção: 
+Escolha uma opção: 0

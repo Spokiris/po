@@ -5,16 +5,7 @@ Menu Principal
 4 - Menu de Edição
 5 - Menu de Consultas
 0 - Sair
-Escolha uma opção: Menu de Edição
-1 - Visualizar
-2 - Inserir
-3 - Copiar
-4 - Apagar
-5 - Cortar
-6 - Colar
-7 - Mostrar 'cut buffer'
-0 - Sair
-Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): Copiar: Operação inválida: A gama '1;35:23;25' é inválida.
+Escolha uma opção: 4
 Menu de Edição
 1 - Visualizar
 2 - Inserir
@@ -24,7 +15,9 @@ Menu de Edição
 6 - Colar
 7 - Mostrar 'cut buffer'
 0 - Sair
-Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): Copiar: Operação inválida: A gama '1;1:55;1' é inválida.
+Escolha uma opção: 3
+Especifique a gama (startline;startcol:endline;endcol): 1;35:23;25
+Copiar: Operação inválida: A gama '1;35:23;25' é inválida.
 Menu de Edição
 1 - Visualizar
 2 - Inserir
@@ -34,11 +27,24 @@ Menu de Edição
 6 - Colar
 7 - Mostrar 'cut buffer'
 0 - Sair
-Escolha uma opção: Menu Principal
+Escolha uma opção: 3
+Especifique a gama (startline;startcol:endline;endcol): 1;1:55;1
+Copiar: Operação inválida: A gama '1;1:55;1' é inválida.
+Menu de Edição
+1 - Visualizar
+2 - Inserir
+3 - Copiar
+4 - Apagar
+5 - Cortar
+6 - Colar
+7 - Mostrar 'cut buffer'
+0 - Sair
+Escolha uma opção: 0
+Menu Principal
 1 - Novo
 2 - Abrir
 3 - Guardar
 4 - Menu de Edição
 5 - Menu de Consultas
 0 - Sair
-Escolha uma opção: 
+Escolha uma opção: 0
