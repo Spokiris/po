@@ -5,7 +5,6 @@ import java.io.Serializable;
 import xxl.core.exception.UnrecognizedEntryException;
 
 import java.util.ArrayList;
-import java.util.List;
 /**
  * Class representing a spreadsheet.
  */
@@ -15,14 +14,21 @@ public class Spreadsheet implements Serializable {
   private int _rows;
   private int _columns;
   private boolean _changed;
-  private List<User> _users = new ArrayList<>();
+  private ArrayList<User> _users;
   private CutBuffer _cutBuffer;
-  private Cell[][] _cells = new Cell[_rows][_columns];
+  private Cell[][] _cells;
   
-  public Spreadsheet(int rows, int columns) {
+  public Spreadsheet(int rows, int columns){
     _rows = rows;
     _columns = columns;
     _changed = false;
+    _users = new ArrayList<User>();
+    _cells = new Cell[_rows][_columns];
+    for (int i = 0; i < _rows; i++) {
+      for (int j = 0; j < _columns; j++) {
+        _cells[i][j] = new Cell(i+1,j+1);
+      }
+    }
   }
 
   public boolean isCell(int row, int column) {
@@ -61,10 +67,10 @@ public class Spreadsheet implements Serializable {
 
   public void paste(Range range) {
     if(inRange(range)) {
-      for (int i = range.getStartRow(); i <= range.getEndRow() + 1; i++) {     
-        for (int j = range.getStartColumn(); j <= range.getEndColumn() + 1 ; j++) {         
+      for (int i = range.getStartRow()-1; i <= range.getEndRow()-1; i++) {     
+        for (int j = range.getStartColumn()-1; j <= range.getEndColumn()-1 ; j++) {         
           for (Cell cell : _cutBuffer.getCells()) {
-            _cells[i][j].setContent(cell.value()); 
+            _cells[i][j].setContent(cell.value());
           }
         }
       }
@@ -72,7 +78,7 @@ public class Spreadsheet implements Serializable {
   }
 
   public void cut(Range range) {
-    paste(range);
+    copy(range);
     clear(range);
   }
   
@@ -89,14 +95,14 @@ public class Spreadsheet implements Serializable {
   }
   Literal value(int row, int column) throws UnrecognizedEntryException {
     if(isCell(row, column)) {
-      return _cells[row][column].value();
+      return _cells[row-1][column-1].value();
         }
         throw new UnrecognizedEntryException("Cell does not exist");
     
   }
 
   public Cell getCell(int row, int column) {
-    return _cells[row][column];
+    return _cells[row-1][column-1];
   }
   
   /**
@@ -109,24 +115,19 @@ public class Spreadsheet implements Serializable {
    */
   public void insertContent(int row, int column, Content contentSpecification) throws UnrecognizedEntryException {
     if(isCell(row, column)) {
-      _cells[row][column].setContent(contentSpecification);
+      _cells[row-1][column-1].setContent(contentSpecification);
       _changed = true;
     }
   }    
 
   public void getRange(Range range) {
     if(inRange(range)) {
-      for (int i = range.getStartRow(); i <= range.getEndRow() + 1; i++) {     
-        for (int j = range.getStartColumn(); j <= range.getEndColumn() + 1 ; j++) {         
+      for (int i = range.getStartRow()-1; i <= range.getEndRow()-1; i++) {     
+        for (int j = range.getStartColumn()-1; j <= range.getEndColumn()-1; j++) {         
           range.addCell(_cells[i][j]);
         }
       }
     }
-  }
-
-
-  public void insert(int parseInt, int parseInt2, Content content) {
-    
   }
 
 public Range createRange(String range) throws UnrecognizedEntryException {
@@ -144,9 +145,9 @@ public Range createRange(String range) throws UnrecognizedEntryException {
     firstRow = lastRow = Integer.parseInt(rangeCoordinates[0]);
     firstColumn = lastColumn = Integer.parseInt(rangeCoordinates[1]);
   }
-
-  // check if coordinates are valid
-  // if yes
+  if (!isCell(firstRow, firstColumn) || !isCell(lastRow, lastColumn)) {
+    throw new UnrecognizedEntryException("");
+  }
   return new Range(firstRow, firstColumn, lastRow, lastColumn);
 }
 

@@ -17,7 +17,7 @@ import java.io.FileOutputStream;
 /**
  * Class representing a spreadsheet application.
  */
-public class Calculator implements Serializable{
+public class Calculator{
   /** The current spreadsheet. */
   private Spreadsheet _spreadsheet;
   private User _activeUser;
