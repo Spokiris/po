@@ -183,4 +183,20 @@ public Range createRange(String range,Spreadsheet spreadsheet) throws Unrecogniz
     }
     return new Range(firstRow, lastRow, firstColumn, lastColumn, spreadsheet);
     }
+
+    public String showFunctions(String function){
+        String output = "";
+        for (int i = 1; i <= _rows; i++) {
+            for (int j = 1; j <= _columns; j++) {
+                if(_cells[i-1][j-1].content() != null){
+                    if(_cells[i-1][j-1].content().toString().startsWith("="+function)){
+                        output += _cells[i-1][j-1].toString()+"\n";
+                    }
+                }
+            }
+        }
+        return output;
+    }
+
+    
 }
