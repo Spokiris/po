@@ -111,6 +111,9 @@ public class Calculator{
     catch (IOException e) {
       throw new IOException();
     }
+    catch (MissingFileAssociationException e) {
+      throw new MissingFileAssociationException();
+    }
   }
   
   /**
