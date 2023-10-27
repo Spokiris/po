@@ -12,11 +12,10 @@ public abstract class IntervalFunction extends Function {
     }
     
     protected abstract Literal compute();
-    
-    public String toString() {
+    public String toString(){
         return "=" + _name + "(" + _range.toString() + ")";
     }
-
+    
     public Range getRange() {
         return _range;
     }

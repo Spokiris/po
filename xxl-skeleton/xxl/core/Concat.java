@@ -4,6 +4,11 @@ public class Concat extends IntervalFunction {
     public Concat(Range range) {
         super("CONCAT", range);
     }
+    
+    @Override
+    public String toString(){
+        return compute().asString() + super.toString();
+    }
 
     @Override
     public Literal compute(){

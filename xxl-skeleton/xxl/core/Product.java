@@ -7,6 +7,11 @@ public class Product extends IntervalFunction {
     }
 
     @Override
+    public String toString(){
+        return compute().asString() + super.toString();
+    }
+
+    @Override
     public Literal compute(){
         Literal result = new LiteralInteger(1);
         for (Cell cell : getRange().getCells()) {

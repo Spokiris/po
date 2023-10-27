@@ -6,6 +6,11 @@ public class Coalesce extends IntervalFunction {
         super("COALESCE", range);
     }
 
+    @Override
+    public String toString(){
+        return compute().asString() + super.toString();
+    }
+
     @Override   
     public Literal compute() {
         Literal result = new LiteralString("");

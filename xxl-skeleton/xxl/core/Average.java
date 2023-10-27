@@ -7,6 +7,11 @@ public class Average extends IntervalFunction{
     }
 
     @Override
+    public String toString(){
+        return compute().asString() + super.toString();
+    }
+
+    @Override
     public Literal compute(){
         Literal result = new LiteralInteger(0);
         int sum = 0;

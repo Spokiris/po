@@ -209,8 +209,8 @@ public Range createRange(String range,Spreadsheet spreadsheet) throws Unrecogniz
     Collections.sort(cells, new Comparator<Cell>() {
         @Override
         public int compare(Cell c1, Cell c2) {
-            String s1 = c1.content() != null ? c1.content().toString() : "";
-            String s2 = c2.content() != null ? c2.content().toString() : "";
+            String s1 = c1.content().value() != null ? c1.content().value().toString() : "";
+            String s2 = c2.content().value() != null ? c2.content().value().toString() : "";
             return s1.compareTo(s2);
         }
     });
