@@ -30,7 +30,7 @@ public class Reference extends Content{
     }   
 
     public String toString() {
-        return "=" + _row + ";" + _column ;
+        return  _row + ";" + _column ;
     }
     
     @Override
