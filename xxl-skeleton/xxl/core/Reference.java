@@ -15,6 +15,7 @@ public class Reference extends Content{
         String[] parts = substring.split(";");
         _row = Integer.parseInt(parts[0]);
         _column = Integer.parseInt(parts[1]);
+        _spreadsheet = spreadsheet;
     }
 
     public int row() {

@@ -206,14 +206,23 @@ public Range createRange(String range,Spreadsheet spreadsheet) throws Unrecogniz
     }
 
     public void sortCellsByContent(ArrayList<Cell> cells) {
-    Collections.sort(cells, new Comparator<Cell>() {
-        @Override
-        public int compare(Cell c1, Cell c2) {
-            String s1 = c1.content().value() != null ? c1.content().value().toString() : "";
-            String s2 = c2.content().value() != null ? c2.content().value().toString() : "";
-            return s1.compareTo(s2);
-        }
-    });
-  }
-    
+      Collections.sort(cells, new Comparator<Cell>() {
+          @Override
+          public int compare(Cell c1, Cell c2) {
+              String s1 = c1.content().value() != null ? c1.content().value().toString() : "";
+              String s2 = c2.content().value() != null ? c2.content().value().toString() : "";
+              int valueComparison = s1.compareTo(s2);
+              if (valueComparison != 0) {
+                  return valueComparison;
+              } else {
+                  int rowComparison = Integer.compare(c1.row(), c2.row());
+                  if (rowComparison != 0) {
+                      return rowComparison;
+                  } else {
+                      return Integer.compare(c1.column(), c2.column());
+                  }
+              }
+          }
+      });
+  } 
 }
