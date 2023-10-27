@@ -19,12 +19,12 @@ public abstract class BinaryFunction extends Function {
         String[] ref1 = _arg1.toString().split("=");
         String s = "";
         if (ref0.length == 1) {
-            s = "=" + _name + "(" + ref0 + ",";
+            s = "=" + _name + "(" + ref0[0] + ",";
         } else{
             s = "=" + _name + "(" + ref0[1] + ",";
         }
         if (ref1.length == 1){
-            s += ref1 +")";
+            s += ref1[0] +")";
         }else{
             s += ref1[1] +")";
         }

@@ -7,7 +7,7 @@ import xxl.core.Function;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Comparator;
-import java.lang.*;
+import java.lang.ClassCastException;
 
 // FIXME import classes
 
@@ -25,7 +25,7 @@ class DoShowFunctions extends Command<Spreadsheet> {
   protected final void execute() {
     String function = stringField("function");
     List<Cell> _cellsToShow = new ArrayList<>(_receiver.searchFunction(function));
-    _cellsToShow.sort(new ComparatorCells());
+    _cellsToShow.sort(new ComparatorFunctions());
     for (Cell cell: _cellsToShow) {
       _display.addLine(cell);
     }
@@ -33,15 +33,14 @@ class DoShowFunctions extends Command<Spreadsheet> {
   }
 }
 
-class ComparatorCells implements Comparator<Cell>{
+class ComparatorFunctions implements Comparator<Cell>{
   public int compare(Cell c1, Cell c2){
     try {
       Function f1 = (Function) c1.content();
       Function f2 = (Function) c2.content();
       if(f1.name().equals(f2.name()) && c1.row() == c2.row()){
           return c1.column() - c2.column();
-    }}catch (ClassCastException e) {
-      continue;
+    }}catch (ClassCastException e){
     }
     return 0;
   }

@@ -1,6 +1,5 @@
 package xxl.app.main;
 
-import pt.tecnico.uilib.forms.Form;
 import pt.tecnico.uilib.menus.Command;
 import xxl.core.Spreadsheet;
 import xxl.core.Calculator;

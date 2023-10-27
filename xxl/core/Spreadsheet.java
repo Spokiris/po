@@ -5,8 +5,6 @@ import java.io.Serializable;
 import xxl.core.exception.UnrecognizedEntryException;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 /**
  * Class representing a spreadsheet.
@@ -130,6 +128,21 @@ public class Spreadsheet implements Serializable {
       return cellList;
     }
 
+  public List<Cell> searchValue(String Value){
+    List<Cell> cellList = new ArrayList<>();
+    for(int i=1;i < getColumns();i++ ){
+      for(int j=1;j < getRows();j++){
+        try{
+          if(getCell(i,j).content().value().toString() == Value){
+            cellList.add(getCell(i,j));
+          }
+        } catch (Exception e){
+          continue;
+        }
+      }}
+      return cellList;
+    }
+
   Literal value(int row, int column) throws UnrecognizedEntryException {
     if(isCell(row, column)) {
       return _cells[row-1][column-1].value();
@@ -191,44 +204,5 @@ public Range createRange(String range) throws UnrecognizedEntryException {
     }
     return new Range(firstRow, lastRow, firstColumn, lastColumn, this);
     }
-
-    public String showFunctions(String function){
-        ArrayList<Cell> cells = new ArrayList<Cell>();
-        for (int i = 1; i <= _rows; i++) {
-            for (int j = 1; j <= _columns; j++) {
-                if(_cells[i-1][j-1].content() != null){
-                    if(_cells[i-1][j-1].content().toString().contains(function)){
-                        cells.add(_cells[i-1][j-1]);
-                    }
-                }
-            }
-        }
-        sortCellsByContent(cells);
-        String result = "";
-        for (Cell cell : cells) {
-            result += cell.toString()+"\n";
-        }
-        return result;
-    }
-
-    public void sortCellsByContent(ArrayList<Cell> cells) {
-      Collections.sort(cells, new Comparator<Cell>() {
-          @Override
-          public int compare(Cell c1, Cell c2) {
-              String s1 = c1.content().value() != null ? c1.content().value().toString() : "";
-              String s2 = c2.content().value() != null ? c2.content().value().toString() : "";
-              int valueComparison = s1.compareTo(s2);
-              if (valueComparison != 0) {
-                  return valueComparison;
-              } else {
-                  int rowComparison = Integer.compare(c1.row(), c2.row());
-                  if (rowComparison != 0) {
-                      return rowComparison;
-                  } else {
-                      return Integer.compare(c1.column(), c2.column());
-                  }
-              }
-          }
-      });
-  } 
+    
 }
