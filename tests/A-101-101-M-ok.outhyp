@@ -15,8 +15,11 @@ Escolha uma opção: Menu de Edição
 7 - Mostrar 'cut buffer'
 0 - Sair
 Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): 1;1|5
+
 2;1|''111
+
 3;1|''ola
+
 4;1|3
 
 Menu de Edição

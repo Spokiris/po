@@ -1,29 +1,21 @@
 *** tests/A-091-091-M-ok.out	2023-10-19 17:08:13.000000000 +0100
---- tests/A-091-091-M-ok.outhyp	2023-10-27 14:03:37.064830078 +0100
+--- tests/A-091-091-M-ok.outhyp	2023-10-27 19:48:55.790368272 +0100
 ***************
-*** 1,23 ****
-- Menu Principal
-- 1 - Novo
-- 2 - Abrir
-- 3 - Guardar
-- 4 - Menu de Edição
-- 5 - Menu de Consultas
-- 0 - Sair
-- Escolha uma opção: Menu de Consultas
-- 1 - Procurar valores
-- 2 - Procurar funções
-- 0 - Sair
-- Escolha uma opção: Função a procurar: Menu de Consultas
-- 1 - Procurar valores
-- 2 - Procurar funções
-- 0 - Sair
-- Escolha uma opção: Menu Principal
-- 1 - Novo
-- 2 - Abrir
-- 3 - Guardar
-- 4 - Menu de Edição
-- 5 - Menu de Consultas
-- 0 - Sair
-- Escolha uma opção: 
-\ No newline at end of file
---- 0 ----
+*** 9,15 ****
+  1 - Procurar valores
+  2 - Procurar funções
+  0 - Sair
+! Escolha uma opção: Função a procurar: Menu de Consultas
+  1 - Procurar valores
+  2 - Procurar funções
+  0 - Sair
+--- 9,17 ----
+  1 - Procurar valores
+  2 - Procurar funções
+  0 - Sair
+! Escolha uma opção: Função a procurar: 1;1|15
+! 
+! Menu de Consultas
+  1 - Procurar valores
+  2 - Procurar funções
+  0 - Sair

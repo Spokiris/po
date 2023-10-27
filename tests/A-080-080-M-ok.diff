@@ -1,59 +1,23 @@
 *** tests/A-080-080-M-ok.out	2023-10-19 17:10:34.000000000 +0100
---- tests/A-080-080-M-ok.outhyp	2023-10-27 14:03:36.320833979 +0100
+--- tests/A-080-080-M-ok.outhyp	2023-10-27 19:48:53.194526698 +0100
 ***************
-*** 1,53 ****
-- Menu Principal
-- 1 - Novo
-- 2 - Abrir
-- 3 - Guardar
-- 4 - Menu de Edição
-- 5 - Menu de Consultas
-- 0 - Sair
-- Escolha uma opção: Menu de Edição
-- 1 - Visualizar
-- 2 - Inserir
-- 3 - Copiar
-- 4 - Apagar
-- 5 - Cortar
-- 6 - Colar
-- 7 - Mostrar 'cut buffer'
-- 0 - Sair
-- Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): Menu de Edição
-- 1 - Visualizar
-- 2 - Inserir
-- 3 - Copiar
-- 4 - Apagar
-- 5 - Cortar
-- 6 - Colar
-- 7 - Mostrar 'cut buffer'
-- 0 - Sair
-- Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): Menu de Edição
-- 1 - Visualizar
-- 2 - Inserir
-- 3 - Copiar
-- 4 - Apagar
-- 5 - Cortar
-- 6 - Colar
-- 7 - Mostrar 'cut buffer'
-- 0 - Sair
-- Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): 53;1|49
-- 54;1|43
-- Menu de Edição
-- 1 - Visualizar
-- 2 - Inserir
-- 3 - Copiar
-- 4 - Apagar
-- 5 - Cortar
-- 6 - Colar
-- 7 - Mostrar 'cut buffer'
-- 0 - Sair
-- Escolha uma opção: Menu Principal
-- 1 - Novo
-- 2 - Abrir
-- 3 - Guardar
-- 4 - Menu de Edição
-- 5 - Menu de Consultas
-- 0 - Sair
-- Escolha uma opção: 
-\ No newline at end of file
---- 0 ----
+*** 32,39 ****
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): 53;1|49
+! 54;1|43
+  Menu de Edição
+  1 - Visualizar
+  2 - Inserir
+--- 32,41 ----
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): 
+! 
+! 
+! 
+  Menu de Edição
+  1 - Visualizar
+  2 - Inserir

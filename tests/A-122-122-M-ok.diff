@@ -1,10 +1,10 @@
 *** tests/A-122-122-M-ok.out	2023-10-19 17:08:13.000000000 +0100
---- tests/A-122-122-M-ok.outhyp	2023-10-27 14:03:38.260823773 +0100
+--- tests/A-122-122-M-ok.outhyp	2023-10-27 19:48:59.031947540 +0100
 ***************
-*** 1,30 ****
-- Menu Principal
-- 1 - Novo
-- 2 - Abrir
+*** 1,26 ****
+  Menu Principal
+  1 - Novo
+  2 - Abrir
 - 3 - Guardar
 - 4 - Menu de Edição
 - 5 - Menu de Consultas
@@ -18,19 +18,27 @@
 - Menu de Consultas
 - 1 - Procurar valores
 - 2 - Procurar funções
-- 0 - Sair
-- Escolha uma opção: Valor a procurar: 2;3|'123456=CONCAT(1;1:1;2)
-- Menu de Consultas
-- 1 - Procurar valores
-- 2 - Procurar funções
-- 0 - Sair
-- Escolha uma opção: Menu Principal
-- 1 - Novo
-- 2 - Abrir
-- 3 - Guardar
-- 4 - Menu de Edição
-- 5 - Menu de Consultas
-- 0 - Sair
-- Escolha uma opção: 
-\ No newline at end of file
---- 0 ----
+  0 - Sair
+! Escolha uma opção: Valor a procurar: 2;3|'123456=CONCAT(1;1:1;2)
+! Menu de Consultas
+! 1 - Procurar valores
+! 2 - Procurar funções
+  0 - Sair
+! Escolha uma opção: Menu Principal
+  1 - Novo
+  2 - Abrir
+  3 - Guardar
+--- 1,13 ----
+  Menu Principal
+  1 - Novo
+  2 - Abrir
+  0 - Sair
+! Escolha uma opção: Opção inválida!
+! Menu Principal
+! 1 - Novo
+! 2 - Abrir
+  0 - Sair
+! Escolha uma opção: Especifique o número de linhas da folha: Especifique o número de linhas da folha: Especifique o número de colunas da folha: Especifique o número de colunas da folha: Menu Principal
+  1 - Novo
+  2 - Abrir
+  3 - Guardar

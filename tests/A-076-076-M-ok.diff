@@ -1,5 +1,5 @@
 *** tests/A-076-076-M-ok.out	2023-10-19 17:17:15.000000000 +0100
---- tests/A-076-076-M-ok.outhyp	2023-10-27 14:03:36.160834817 +0100
+--- tests/A-076-076-M-ok.outhyp	2023-10-27 19:48:52.710290783 +0100
 ***************
 *** 2,38 ****
   1 - Novo
@@ -44,7 +44,7 @@
   1 - Novo
   2 - Abrir
   0 - Sair
-! Escolha uma opção: Ficheiro a abrir: Abrir: Operação inválida: Problema ao abrir ficheiro: saved27
+! Escolha uma opção: Ficheiro a abrir: Abrir: Operação inválida: Problema ao abrir ficheiro: saved27 (No such file or directory)
 ! Menu Principal
   1 - Novo
   2 - Abrir

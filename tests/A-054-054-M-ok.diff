@@ -1,51 +1,21 @@
 *** tests/A-054-054-M-ok.out	2023-10-19 17:08:13.000000000 +0100
---- tests/A-054-054-M-ok.outhyp	2023-10-27 14:03:34.228844877 +0100
+--- tests/A-054-054-M-ok.outhyp	2023-10-27 19:48:49.732840196 +0100
 ***************
-*** 1,45 ****
-- Menu Principal
-- 1 - Novo
-- 2 - Abrir
-- 3 - Guardar
-- 4 - Menu de Edição
-- 5 - Menu de Consultas
-- 0 - Sair
-- Escolha uma opção: Menu de Edição
-- 1 - Visualizar
-- 2 - Inserir
-- 3 - Copiar
-- 4 - Apagar
-- 5 - Cortar
-- 6 - Colar
-- 7 - Mostrar 'cut buffer'
-- 0 - Sair
-- Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): Menu de Edição
-- 1 - Visualizar
-- 2 - Inserir
-- 3 - Copiar
-- 4 - Apagar
-- 5 - Cortar
-- 6 - Colar
-- 7 - Mostrar 'cut buffer'
-- 0 - Sair
-- Escolha uma opção: 1;1|15
-- 1;2|49
-- 1;3|15=1;1
-- Menu de Edição
-- 1 - Visualizar
-- 2 - Inserir
-- 3 - Copiar
-- 4 - Apagar
-- 5 - Cortar
-- 6 - Colar
-- 7 - Mostrar 'cut buffer'
-- 0 - Sair
-- Escolha uma opção: Menu Principal
-- 1 - Novo
-- 2 - Abrir
-- 3 - Guardar
-- 4 - Menu de Edição
-- 5 - Menu de Consultas
-- 0 - Sair
-- Escolha uma opção: 
-\ No newline at end of file
---- 0 ----
+*** 23,31 ****
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: 1;1|15
+! 1;2|49
+! 1;3|15=1;1
+  Menu de Edição
+  1 - Visualizar
+  2 - Inserir
+--- 23,29 ----
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: xxl.core.CutBuffer@4d7e1886
+  Menu de Edição
+  1 - Visualizar
+  2 - Inserir

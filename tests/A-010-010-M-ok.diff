@@ -1,11 +1,8 @@
 *** tests/A-010-010-M-ok.out	2023-10-06 12:23:45.000000000 +0100
---- tests/A-010-010-M-ok.outhyp	2023-10-27 14:11:46.187983880 +0100
+--- tests/A-010-010-M-ok.outhyp	2023-10-27 19:48:38.543388796 +0100
 ***************
-*** 2,44 ****
-  1 - Novo
-  2 - Abrir
-  0 - Sair
-! Escolha uma opção: Ficheiro a abrir: Menu Principal
+*** 5,44 ****
+  Escolha uma opção: Ficheiro a abrir: Menu Principal
   1 - Novo
   2 - Abrir
 - 3 - Guardar
@@ -45,12 +42,8 @@
   1 - Novo
   2 - Abrir
   3 - Guardar
---- 2,18 ----
-  1 - Novo
-  2 - Abrir
-  0 - Sair
-! Escolha uma opção: Ficheiro a abrir: Abrir: Operação inválida: Problema ao abrir ficheiro: saved09
-! Menu Principal
+--- 5,17 ----
+  Escolha uma opção: Ficheiro a abrir: Menu Principal
   1 - Novo
   2 - Abrir
   0 - Sair

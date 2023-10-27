@@ -1,21 +1,19 @@
 *** tests/A-075-075-M-ok.out	2023-10-19 17:17:15.000000000 +0100
---- tests/A-075-075-M-ok.outhyp	2023-10-27 14:03:35.924836052 +0100
+--- tests/A-075-075-M-ok.outhyp	2023-10-27 19:48:52.138011974 +0100
 ***************
-*** 1,15 ****
-- Menu Principal
-- 1 - Novo
-- 2 - Abrir
-- 3 - Guardar
-- 4 - Menu de Edição
-- 5 - Menu de Consultas
-- 0 - Sair
-- Escolha uma opção: Guardar antes de fechar? Ficheiro sem nome. Guardar ficheiro como: Especifique o número de linhas da folha: Especifique o número de colunas da folha: Menu Principal
-- 1 - Novo
-- 2 - Abrir
-- 3 - Guardar
-- 4 - Menu de Edição
-- 5 - Menu de Consultas
-- 0 - Sair
-- Escolha uma opção: 
-\ No newline at end of file
---- 0 ----
+*** 5,11 ****
+  4 - Menu de Edição
+  5 - Menu de Consultas
+  0 - Sair
+! Escolha uma opção: Guardar antes de fechar? Ficheiro sem nome. Guardar ficheiro como: Especifique o número de linhas da folha: Especifique o número de colunas da folha: Menu Principal
+  1 - Novo
+  2 - Abrir
+  3 - Guardar
+--- 5,11 ----
+  4 - Menu de Edição
+  5 - Menu de Consultas
+  0 - Sair
+! Escolha uma opção: Especifique o número de linhas da folha: Especifique o número de linhas da folha: Especifique o número de linhas da folha: Especifique o número de colunas da folha: Menu Principal
+  1 - Novo
+  2 - Abrir
+  3 - Guardar
