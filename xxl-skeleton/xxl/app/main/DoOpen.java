@@ -16,13 +16,13 @@ class DoOpen extends Command<Calculator> {
 
   DoOpen(Calculator receiver) {
     super(Label.OPEN, receiver);
-    addStringField("filename", "Introduza o nome do ficheiro:");
+    addStringField("filename", Message.openFile());
   }
   
   @Override
   protected final void execute() throws CommandException {
+    String filename = stringField("filename");
       try {
-        String filename = stringField("filename");
         _receiver.load(filename);
       }
       catch (FileNotFoundException e) {
