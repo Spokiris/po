@@ -1,7 +1,9 @@
 package xxl.app.edit;
 
 import pt.tecnico.uilib.menus.Command;
-import xxl.core.*;
+
+import xxl.core.Spreadsheet;
+import xxl.core.CutBuffer;
 
 /**
  * Show cut buffer command.
@@ -14,11 +16,13 @@ class DoShowCutBuffer extends Command<Spreadsheet> {
   
   @Override
   protected final void execute(){
-    Range range = _receiver.getCutBuffer().getRange();
-    if (range == null) {
-      _display.popup("Cut buffer is empty");
-      return;
+    CutBuffer cutBuffer = _receiver.getCutBuffer();
+    if (cutBuffer.getBuffer().isEmpty()) {
+      _display.addLine("Cut buffer is empty");
     }
-    _display.popup(range.toString());
+    else{
+      _display.addLine(cutBuffer);
+    }
+    _display.display();
   }
 }

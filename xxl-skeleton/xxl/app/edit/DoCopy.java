@@ -7,6 +7,8 @@ import xxl.core.*;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 
+import xxl.app.exception.InvalidCellRangeException;
+
 /**
  * Copy command.
  */
@@ -14,16 +16,16 @@ class DoCopy extends Command<Spreadsheet> {
 
   DoCopy(Spreadsheet receiver) {
     super(Label.COPY, receiver);
-    addStringField("range","Insira a gama a copiar: ");
+    addStringField("range",Message.address());
   }
   
   @Override
   protected final void execute() throws CommandException {
-    try {
-    Range range = _receiver.createRange(stringField("range"));
-    _receiver.copy(range);
-    } catch (UnrecognizedEntryException e){
-      throw new CommandException(e.getMessage()){};
+    String range_specification = stringField("range");
+    try{
+    _receiver.copy(range_specification);
+    } catch (UnrecognizedEntryException e) {
+      throw new InvalidCellRangeException(range_specification);
     }
   }
 }

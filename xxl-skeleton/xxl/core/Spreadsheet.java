@@ -29,6 +29,7 @@ public class Spreadsheet implements Serializable {
         _cells[i][j] = new Cell(i+1,j+1);
       }
     }
+    _cutBuffer = new CutBuffer();
   }
 
   public boolean isCell(int row, int column) {
@@ -51,35 +52,54 @@ public class Spreadsheet implements Serializable {
     return _cutBuffer;
   }
 
-  public void copy(Range range) {
-    _cutBuffer.copy(range); 
-  }
-
-  public void clear(Range range) {
-    if(inRange(range)) {
-      for (int i = range.getStartRow(); i <= range.getEndRow() + 1; i++) {     
-        for (int j = range.getStartColumn(); j <= range.getEndColumn() + 1 ; j++) {         
-          _cells[i][j].setContent(); 
-        }
-      }
+  public void copy(String range) throws UnrecognizedEntryException {
+    try{
+      Range tempRange = createRange(range,this);
+      _cutBuffer.copy(tempRange);
+    }catch(UnrecognizedEntryException e){
+      throw new UnrecognizedEntryException(e.getMessage());
     }
   }
 
-  public void paste(Range range) {
-    if(inRange(range)) {
-      for (int i = range.getStartRow()-1; i <= range.getEndRow()-1; i++) {     
-        for (int j = range.getStartColumn()-1; j <= range.getEndColumn()-1 ; j++) {         
-          for (Cell cell : _cutBuffer.getCells()) {
-            _cells[i][j].setContent(cell.value());
+  public void clear(String range) throws UnrecognizedEntryException{
+    try{
+      Range tempRange = createRange(range,this);
+    if(inRange(tempRange)) {
+      for (int i = tempRange.getStartRow(); i <= tempRange.getEndRow() + 1; i++) {     
+        for (int j = tempRange.getStartColumn(); j <= tempRange.getEndColumn() + 1 ; j++) {         
+          _cells[i-1][j-1].setContent(); 
           }
         }
       }
+    }catch(UnrecognizedEntryException e){
+      throw new UnrecognizedEntryException(e.getMessage());
     }
   }
 
-  public void cut(Range range) {
-    copy(range);
-    clear(range);
+  public void paste(String range) throws UnrecognizedEntryException {
+    try{
+      Range tempRange = createRange(range,this);
+    if(inRange(tempRange)){
+      for (int i = tempRange.getStartRow()-1; i <= tempRange.getEndRow()-1; i++) {     
+        for (int j = tempRange.getStartColumn()-1; j <= tempRange.getEndColumn()-1 ; j++) {         
+          for (Cell cell : _cutBuffer.getBuffer()) {
+            _cells[i-1][j-1].setContent(cell.value());
+            }
+          }
+        }
+      }
+    } catch (UnrecognizedEntryException e){
+      throw new UnrecognizedEntryException(e.getMessage());
+    }
+  }
+
+  public void cut(String range) throws UnrecognizedEntryException{
+    try{
+      copy(range);
+      clear(range);
+    }catch(UnrecognizedEntryException e){
+      throw new UnrecognizedEntryException(e.getMessage());
+    }
   }
   
   boolean addUser(User user) {

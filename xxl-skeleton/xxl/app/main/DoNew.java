@@ -1,9 +1,7 @@
 package xxl.app.main;
 
 import pt.tecnico.uilib.menus.Command;
-import pt.tecnico.uilib.menus.CommandException;
 import xxl.core.Spreadsheet;
-import xxl.core.exception.UnrecognizedEntryException;
 import xxl.core.Calculator;
 
 /**
