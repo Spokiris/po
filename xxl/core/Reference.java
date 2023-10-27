@@ -27,7 +27,7 @@ public class Reference extends Content{
     }
 
     public String toString() {
-        return  "=" + _row + ";" + _column ;
+        return  value().asString()+"=" + _row + ";" + _column ;
     }
 
     public Cell getCell(){
@@ -36,6 +36,12 @@ public class Reference extends Content{
     
     @Override
     Literal value(){
+        if (_cell == null) {
+            return new LiteralString("#REF");
+        }
+        if (_cell.value() == null) {
+            return new LiteralString("#VALUE");
+        }
         return _cell.value();
     }
 }
