@@ -51,7 +51,10 @@ public class Cell {
         _content = null;
     }
 
-    public String toString() {
+    public String toString(){
+        if (_content == null) {
+            return "";
+        }
         return _row + ";" + _column + "|" + _content.toString();
     }
 
