@@ -42,10 +42,6 @@ public class Calculator implements Serializable{
       return _spreadsheet;
   }
 
-  public void createNewSpreadsheet(int rows, int columns) {
-    _spreadsheet = new Spreadsheet(rows, columns);
-  }
-
   public boolean createUser(String username) {
     _activeUser = new User(username);
     return _users.add(_activeUser);

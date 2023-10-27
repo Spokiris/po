@@ -3,6 +3,7 @@ package xxl.app.main;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 import xxl.core.Spreadsheet;
+import xxl.core.exception.UnrecognizedEntryException;
 import xxl.core.Calculator;
 
 /**
@@ -17,7 +18,7 @@ class DoNew extends Command<Calculator> {
   }
   
   @Override
-  protected final void execute() throws CommandException {
+  protected final void execute(){
     Integer rows = integerField("rows");
     Integer columns = integerField("columns");
     Spreadsheet sheet = new Spreadsheet(rows, columns);
