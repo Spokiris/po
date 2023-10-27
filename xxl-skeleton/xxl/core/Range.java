@@ -1,6 +1,4 @@
 package xxl.core;
-
-import java.util.List;
 import java.util.ArrayList;
 
 public class Range {
@@ -11,7 +9,7 @@ public class Range {
     private int _endColumn;
     private Spreadsheet _spreadsheet;
 
-    private List<Cell> _Rcells;
+    private ArrayList<Cell> _Rcells;
 
     public Range(String range, Spreadsheet spreadsheet) {
         String[] parts = range.split(":");
@@ -67,7 +65,7 @@ public class Range {
         return _endColumn - _startColumn + 1;
     }
     
-    List<Cell> getCells() {
+    public ArrayList<Cell> getCells() {
         return _Rcells;
     }
 

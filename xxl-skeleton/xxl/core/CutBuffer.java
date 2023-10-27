@@ -1,32 +1,33 @@
 package xxl.core;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class CutBuffer {
     
-    private List<Cell> _buffer;
+    private ArrayList<Cell> _buffer;
 
     public CutBuffer(){
+        _buffer = new ArrayList<Cell>();
     }
     
     public void setBuffer(Range range){
-        for (int i = range.getStartRow(); i <= range.getEndRow(); i++) {
-            for (int j = range.getStartColumn(); j <= range.getEndColumn(); j++) {
-                _buffer.add(new Cell(i, j));
-            }
-        }
+        _buffer = range.getCells();
     } 
 
     public void copy(Range range) {
-        clearBuff();
+        if (_buffer != null){
+            clearBuff();
+        }
         setBuffer(range);
     }
     
     public void clearBuff() {
-        _buffer.clear(); 
+        if (_buffer != null){
+            _buffer.clear();
+        }
     }
 
-    public List<Cell> getBuffer() {
+    public ArrayList<Cell> getBuffer() {
         return _buffer;
     }
 

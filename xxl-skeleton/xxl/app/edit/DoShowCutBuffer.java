@@ -17,7 +17,7 @@ class DoShowCutBuffer extends Command<Spreadsheet> {
   @Override
   protected final void execute(){
     CutBuffer cutBuffer = _receiver.getCutBuffer();
-    if (cutBuffer.getBuffer().isEmpty()) {
+    if (cutBuffer.getBuffer() == null) {
       _display.addLine("Cut buffer is empty");
     }
     else{
