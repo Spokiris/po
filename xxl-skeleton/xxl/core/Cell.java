@@ -43,7 +43,7 @@ public class Cell {
     }
 
     void setContent() {
-        _content = null; //FIXME??
+        _content = null;
     }
 
     public String toString() {
@@ -69,7 +69,6 @@ public class Cell {
             return new Function(content.substring(1)) {
                 @Override
                 public Literal compute() {
-                    // Implement the compute method here
                     return null;
                 }
 

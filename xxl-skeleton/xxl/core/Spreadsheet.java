@@ -65,8 +65,8 @@ public class Spreadsheet implements Serializable {
     try{
       Range tempRange = createRange(range,this);
     if(inRange(tempRange)) {
-      for (int i = tempRange.getStartRow(); i <= tempRange.getEndRow() + 1; i++) {     
-        for (int j = tempRange.getStartColumn(); j <= tempRange.getEndColumn() + 1 ; j++) {         
+      for (int i = tempRange.getStartRow(); i <= tempRange.getEndRow(); i++) {     
+        for (int j = tempRange.getStartColumn(); j <= tempRange.getEndColumn() ; j++) {         
           _cells[i-1][j-1].setContent(); 
           }
         }
@@ -80,8 +80,8 @@ public class Spreadsheet implements Serializable {
     try{
       Range tempRange = createRange(range,this);
     if(inRange(tempRange)){
-      for (int i = tempRange.getStartRow()-1; i <= tempRange.getEndRow()-1; i++) {     
-        for (int j = tempRange.getStartColumn()-1; j <= tempRange.getEndColumn()-1 ; j++) {         
+      for (int i = tempRange.getStartRow(); i <= tempRange.getEndRow(); i++) {     
+        for (int j = tempRange.getStartColumn(); j <= tempRange.getEndColumn() ; j++) {         
           for (Cell cell : _cutBuffer.getBuffer()) {
             _cells[i-1][j-1].setContent(cell.value());
             }
