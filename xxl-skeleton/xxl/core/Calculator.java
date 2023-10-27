@@ -54,7 +54,7 @@ public class Calculator{
    * @throws MissingFileAssociationException if the current network does not have a file.
    * @throws IOException if there is some error while serializing the state of the network to disk.
    */
-  public void save() throws FileNotFoundException, MissingFileAssociationException, IOException {
+  public void save() throws IOException {
       try{
         FileOutputStream fileOut = new FileOutputStream(_filename);
         ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -78,6 +78,7 @@ public class Calculator{
       Spreadsheet spreadsheet = (Spreadsheet) in.readObject();
       in.close();
       fileIn.close();
+      _filename = filename;
       setSpreadsheet(spreadsheet);
     }
     catch (FileNotFoundException e) {
@@ -110,9 +111,6 @@ public class Calculator{
     }
     catch (IOException e) {
       throw new IOException();
-    }
-    catch (MissingFileAssociationException e) {
-      throw new MissingFileAssociationException();
     }
   }
   
