@@ -7,7 +7,6 @@ import xxl.core.Spreadsheet;
 // FIXME import classes
 import xxl.core.exception.UnrecognizedEntryException;
 import xxl.core.Range;
-import xxl.core.Cell;
 
 /**
  * Cut command.
