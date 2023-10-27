@@ -1,0 +1,37 @@
+*** tests/A-020-020-M-ok.out	2023-10-06 12:23:54.000000000 +0100
+--- tests/A-020-020-M-ok.outhyp	2023-10-27 14:11:46.751976379 +0100
+***************
+*** 5,11 ****
+  4 - Menu de Edição
+  5 - Menu de Consultas
+  0 - Sair
+! Escolha uma opção: Guardar antes de fechar? Especifique o número de linhas da folha: Especifique o número de colunas da folha: Menu Principal
+  1 - Novo
+  2 - Abrir
+  3 - Guardar
+--- 5,11 ----
+  4 - Menu de Edição
+  5 - Menu de Consultas
+  0 - Sair
+! Escolha uma opção: Especifique o número de linhas da folha: Especifique o número de linhas da folha: Especifique o número de colunas da folha: Menu Principal
+  1 - Novo
+  2 - Abrir
+  3 - Guardar
+***************
+*** 21,28 ****
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): 1;1|
+! Menu de Edição
+  1 - Visualizar
+  2 - Inserir
+  3 - Copiar
+--- 21,27 ----
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): Menu de Edição
+  1 - Visualizar
+  2 - Inserir
+  3 - Copiar

@@ -6,7 +6,7 @@ public class LiteralInteger extends Literal {
     public LiteralInteger(int value) {
         _value = value;
         ConcreteSubject subject = ConcreteSubject.getInstance();
-        subject.notify();
+        subject.notifyObservers();
     }
 
     public String toString() {

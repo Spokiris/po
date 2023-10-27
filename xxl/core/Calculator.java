@@ -122,7 +122,7 @@ public class Calculator{
    */
   public void importFile(String filename) throws ImportFileException {
     try {
-        Parser parser = new Parser();
+        Parser parser = new Parser(_spreadsheet);
         Spreadsheet spreadsheet = parser.parseFile(filename);
         _spreadsheet = spreadsheet;
     } 

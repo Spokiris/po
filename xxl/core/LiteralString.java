@@ -6,7 +6,7 @@ public class LiteralString extends Literal {
     public LiteralString(String value) {
         _value = value;
         ConcreteSubject subject = ConcreteSubject.getInstance();
-        subject.notify();
+        subject.notifyObservers();
     }
 
     public String toString() {

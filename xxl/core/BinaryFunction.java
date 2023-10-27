@@ -13,7 +13,7 @@ public abstract class BinaryFunction extends Function {
         _arg0 = arg0;
         _arg1 = arg1;
         ConcreteSubject subject = ConcreteSubject.getInstance();
-        subject.notify();
+        subject.notifyObservers();
     }
     
     public String toString() {

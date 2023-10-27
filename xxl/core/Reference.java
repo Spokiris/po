@@ -11,7 +11,7 @@ public class Reference extends Content{
         _cell = spreadsheet.getCell(row, column);
         ConcreteSubject subject = ConcreteSubject.getInstance();
         subject.addObserver(this);
-        subject.notify();
+        subject.notifyObservers();
     }   
 
     public Reference(String substring, Spreadsheet spreadsheet) {
@@ -21,7 +21,7 @@ public class Reference extends Content{
         _cell = spreadsheet.getCell(_row, _column);
         ConcreteSubject subject = ConcreteSubject.getInstance();
         subject.addObserver(this);
-        subject.notify();
+        subject.notifyObservers();
     }
 
     public void update(){

@@ -10,7 +10,7 @@ public abstract class IntervalFunction extends Function {
         _name = name;
         _range = range;
         ConcreteSubject subject = ConcreteSubject.getInstance();
-        subject.notify();
+        subject.notifyObservers();
     }
     
     protected abstract Literal compute();

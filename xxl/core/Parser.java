@@ -9,7 +9,7 @@ class Parser {
 
   private Spreadsheet _spreadsheet;
   
-  Parser() {
+  Parser(){
   }
 
   Parser(Spreadsheet spreadsheet) {
@@ -130,7 +130,7 @@ class Parser {
   }
 
   private Content parseIntervalFunction(String functionName, String rangeDescription)
-    throws UnrecognizedEntryException {
+    throws UnrecognizedEntryException{
     Range range = _spreadsheet.createRange(rangeDescription, _spreadsheet);
     switch (functionName) {
       case "CONCAT":
