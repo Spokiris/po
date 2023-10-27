@@ -25,9 +25,9 @@ public class Spreadsheet implements Serializable {
     _changed = false;
     _users = new ArrayList<User>();
     _cells = new Cell[_rows][_columns];
-    for (int i = 0; i < _rows; i++) {
-      for (int j = 0; j < _columns; j++) {
-        _cells[i][j] = new Cell(i,j);
+    for (int i = 1; i <= _rows; i++) {
+      for (int j = 1; j <= _columns; j++) {
+        _cells[i-1][j-1] = new Cell(i,j);
       }
     }
     _cutBuffer = new CutBuffer();
@@ -113,13 +113,13 @@ public class Spreadsheet implements Serializable {
 
   Literal value(int row, int column) throws UnrecognizedEntryException {
     if(isCell(row, column)) {
-      return _cells[row][column].value();
+      return _cells[row-1][column-1].value();
     }
     throw new UnrecognizedEntryException("");
   }
 
   public Cell getCell(int row, int column) {
-    return _cells[row][column];
+    return _cells[row-1][column-1];
   }
   /**
    * Insert specified content in specified address.
@@ -132,7 +132,7 @@ public class Spreadsheet implements Serializable {
   public void insertContent(int row, int column, Content content) throws UnrecognizedEntryException {
       try{
           if(isCell(row, column)) {
-              _cells[row][column].setContent(content);
+              _cells[row-1][column-1].setContent(content);
               _changed = true;
           }
       } catch(UnrecognizedEntryException e){
@@ -177,9 +177,9 @@ public Range createRange(String range) throws UnrecognizedEntryException {
         ArrayList<Cell> cells = new ArrayList<Cell>();
         for (int i = 1; i <= _rows; i++) {
             for (int j = 1; j <= _columns; j++) {
-                if(_cells[i][j].content() != null){
-                    if(_cells[i][j].content().toString().contains(function)){
-                        cells.add(_cells[i][j]);
+                if(_cells[i-1][j-1].content() != null){
+                    if(_cells[i-1][j-1].content().toString().contains(function)){
+                        cells.add(_cells[i-1][j-1]);
                     }
                 }
             }
